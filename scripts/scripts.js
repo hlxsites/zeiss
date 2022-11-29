@@ -95,7 +95,8 @@ function decorateContentBlocks(main) {
     </div>
   `);
 
-  for (let i = 0; i < sections.length; i += 1) {
+  // Start with 1 to ignore hero
+  for (let i = 1; i < sections.length; i += 1) {
     const section = sections[i];
     section.classList.add('text-block');
 
