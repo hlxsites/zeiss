@@ -950,7 +950,6 @@ main {
   font-size: 0.75rem;
   line-height: 1rem;
   letter-spacing: 0.5px;
-  color: var(--color-font-headlines);
   font-family: var(--font-family-frutiger);
   font-weight: 500;
   font-style: normal
@@ -964,7 +963,6 @@ main {
   font-size: 0.75rem;
   line-height: 1rem;
   letter-spacing: 0.5px;
-  color: var(--color-font-headlines);
   font-family: var(--font-family-frutiger);
   font-weight: 500;
   font-style: normal
@@ -975,7 +973,6 @@ main {
     font-size: 1rem;
     line-height: 1.25rem;
     letter-spacing: 0.5px;
-    color: var(--color-font-headlines);
     font-family: var(--font-family-frutiger);
     font-weight: 500;
     font-style: normal
@@ -986,7 +983,6 @@ main {
   font-size: 0.75rem;
   line-height: 1rem;
   letter-spacing: 0.5px;
-  color: var(--color-font-headlines);
   font-family: var(--font-family-frutiger);
   font-weight: 500;
   font-style: normal
@@ -1009,7 +1005,6 @@ main {
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
-  color: var(--color-font-headlines);
   font-family: var(--font-family-frutiger);
   font-weight: 500;
   font-style: normal
@@ -1025,7 +1020,6 @@ main {
   font-size: 1rem;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
-  color: var(--color-font-headlines);
   font-family: var(--font-family-frutiger);
   font-weight: 700;
   font-style: normal
@@ -1035,14 +1029,12 @@ main {
   font-size: 1.125rem;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
-  color: var(--color-font-headlines)
 }
 
 .text--navi-inactive {
   font-size: 1.125rem;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
-  color: var(--color-font-body)
 }
 
 .text--bold, b {
