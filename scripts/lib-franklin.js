@@ -137,13 +137,9 @@ export function decorateIcons(element = document, isSprite = false) {
 
     if (isSprite) {
       const link = `${window.hlx.codeBasePath}/icons/symbols-sprite.svg#svgsymbol-${icon}`;
-      span.innerHTML = `
-      <span class="svg-scale-wrapper">
-        <svg focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink">
-          <use xlink:href="${link}"></use>
-        </svg>
-      </span>
-      `;
+      span.innerHTML = `<svg focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <use xlink:href="${link}"></use>
+      </svg>`;
     } else {
       // eslint-disable-next-line no-use-before-define
       const resp = await fetch(`${window.hlx.codeBasePath}/icons/${icon}.svg`);
