@@ -7,38 +7,6 @@ function template(props) {
         <div class="grid__column grid__column--100 image-slideshow__wrapper">
           <div>
             <div class="thumbnail-slideshow thumbnail-slideshow--left-aligned">
-              
-              <!--
-              <div class="thumbnail-slideshow__thumbs-wrapper" data-js-select="ThumbnailSlideshow_thumbs-wrapper">
-                <button class="thumbnail-slideshow__prev-button" role="navigation">
-                  <span class="icon icon-chevron-left "></span>
-                </button>
-      
-                <div class="slideshow thumbnail-slideshow__thumbs slideshow--navigation-recenter">
-                  <div class="slideshow__container swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
-                    <ul class="slideshow__list swiper-wrapper">
-                      ${props.items.map(() => `
-                        <li  class="slideshow__item swiper-slide">
-                          <figure class="lazy-image lazy-image--position-top"></figure>
-                        </li>
-                      `).join('')}
-                    </ul>
-
-                    <div class="slideshow__pagination-wrapper">
-                      <div class="slideshow__pagination-bar">
-                        <div class="swiper-pagination slideshow__pagination swiper-pagination-clickable swiper-pagination-bullets" role="navigation"></div>
-                        <span class="slideshow__pagination-bullet slideshow__pagination-bullet--animated"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <button class="thumbnail-slideshow__next-button" role="navigation">
-                  <span class="icon icon-chevron-right"></span>
-                </button>
-              </div>
-              -->
-    
               <div class="slideshow thumbnail-slideshow__main slideshow--navigation-recenter">
                 <div class="slideshow__container swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                   <ul class="slideshow__list swiper-wrapper">
