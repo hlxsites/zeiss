@@ -56,7 +56,7 @@ function template(props) {
                                     </div>
                                     
                                     <div class="button-link button-link--link">
-                                      <a class=" button-link--icon  button-link--internal" href="${item.href}">
+                                      <a class=" button-link--icon  button-link--internal" href="${item.href}" download="${item.name}">
                                         <span class="button-link__content">
                                           <span>
                                             <span>Download</span>
@@ -110,10 +110,12 @@ export default function decorate(block) {
     picture.classList.add('lazy-image__target-image');
 
     const img = picture.querySelector('img');
-    img.alt = 'Vorschaubild';
+    const name = img.alt;
+    img.alt = `Vorschaubild von ${name}`;
     img.title = 'Download';
 
     return {
+      name,
       image: picture.outerHTML,
       href: unoptimize(img.src),
     };
