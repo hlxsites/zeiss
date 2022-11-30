@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import { decorateIcons } from '../../scripts/lib-franklin.js';
 
 function template(info) {
@@ -64,7 +65,14 @@ export default async function decorate(block) {
     if (pub && pub.readingTime) {
       timeString = `${pub.readingTime}.`;
     }
-    block.innerHTML = template({Date: dateString, Duration: timeString, Main: block.querySelector('h1').textContent, Sub: block.querySelector('h2').textContent});
+    block.innerHTML = template(
+      {
+        Date: dateString,
+        Duration: timeString,
+        Main: block.querySelector('h1').textContent,
+        Sub: block.querySelector('h2').textContent
+      }
+    );
 
     decorateIcons(block, true);
   }
