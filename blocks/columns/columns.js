@@ -56,7 +56,7 @@ function template(props) {
                                     </div>
                                     
                                     <div class="button-link button-link--link">
-                                      <a class=" button-link--icon  button-link--internal" href="${item.href}" download>
+                                      <a class=" button-link--icon  button-link--internal" href="${item.href}">
                                         <span class="button-link__content">
                                           <span>
                                             <span>Download</span>
