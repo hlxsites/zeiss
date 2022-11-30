@@ -8,11 +8,7 @@ function template(props) {
           <div class="grid__column grid__column--inner">
             <div class="text-block__headline">
               <div class="headline hl-l">
-                <span>
-                  <h2 id="${item.title.id}">
-                    <span class="headline__main">${item.title.label}</span>
-                  </h2>
-                </span>
+                <span class="heading-slot headline__main"></span>
               </div>
             </div>
 
@@ -87,11 +83,14 @@ function addCollapseListener(collapse) {
 export default function decorate(block) {
   const uncapitalize = (s) => s.charAt(0).toLowerCase() + s.slice(1);
 
+  const headings = [];
   const items = Array.from(block.children).map((item) => {
     const heading = item.querySelector('h2');
+    // Keep a reference of the heading for navigation scroll tracking
+    headings.push(heading);
+
     const label = heading.textContent;
     const uncapitalizedLabel = uncapitalize(label);
-    const { id } = heading;
 
     const paragraphs = Array.from(item.querySelectorAll('p'));
     const link = paragraphs.pop().querySelector('a');
@@ -99,8 +98,6 @@ export default function decorate(block) {
 
     return {
       title: {
-        id,
-        label,
         uncapitalizedLabel,
       },
       text,
@@ -113,6 +110,9 @@ export default function decorate(block) {
   });
 
   block.innerHTML = template({ items });
+
+  // Insert the headings back in their respective slots for navigation scroll tracking
+  block.querySelectorAll('.heading-slot').forEach((slot, index) => slot.append(headings[index]));
 
   decorateIcons(block, true);
 
