@@ -27,7 +27,7 @@ const socials = [{
 }, {
   type: 'facebook',
   label: 'Diese Website auf Facebook teilen',
-  href: meta.url,
+  href: `https://www.facebook.com/sharer/sharer.php?u=${meta.url}`,
   icon: 'facebook',
 }];
 
