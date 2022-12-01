@@ -170,6 +170,8 @@ function addHeaderInteractions(header) {
 
   const closeMegaMenu = (link, menu) => {
     container.ontransitionend = () => {
+      document.body.classList.remove('fixed-body-scroll-position');
+
       link.classList.remove(linkMenuOpenClass);
       menu.classList.remove(menuVisibleClass);
 
@@ -201,6 +203,8 @@ function addHeaderInteractions(header) {
 
       if (!link.classList.contains(linkMenuOpenClass)) {
         if (!isMenuOpen) {
+          document.body.classList.add('fixed-body-scroll-position');
+
           link.classList.add(linkMenuOpenClass);
           menu.classList.add(menuVisibleClass);
           backdrop.setAttribute('style', 'visibility: visible; opacity: 1');
@@ -247,6 +251,7 @@ function addHeaderInteractions(header) {
     const mainHeader = header.querySelector('.main-header');
     mainHeader.classList.toggle('header--expanded', !mainHeader.classList.contains('header--expanded'));
     mainHeader.classList.toggle('header--mobile-navigation-open', !mainHeader.classList.contains('header--mobile-navigation-open'));
+    document.body.classList.toggle('fixed-body-scroll-position', !document.body.classList.contains('fixed-body-scroll-position'));
   };
 }
 
