@@ -94,10 +94,10 @@ export default async function decorate(block) {
       items.push(
         {
           Name: doc.querySelector('html > head > title').text,
-          Email: doc.querySelector('html > head > meta[name="email"]').content,
-          Org: doc.querySelector('html > head > meta[name="org"]').content,
-          Phone: doc.querySelector('html > head > meta[name="phone"]').content,
-          vCard: doc.querySelector('html > head > meta[name="vcard"]').content
+          Email: doc.querySelector('html > head > meta[name="email"]')?.content || '',
+          Org: doc.querySelector('html > head > meta[name="org"]')?.content || '',
+          Phone: doc.querySelector('html > head > meta[name="phone"]')?.content || '',
+          vCard: doc.querySelector('html > head > meta[name="vcard"]')?.content || '',
         }
       );
     }
