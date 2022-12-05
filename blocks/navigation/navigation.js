@@ -152,10 +152,14 @@ function addInteractions(nav) {
  */
 
 export default async function decorate(block) {
-  const links = Array.from(block.querySelectorAll('a')).map((link) => ({
-    href: new URL(link.href).hash,
-    label: link.textContent,
-  }));
+  const links = Array.from(document.querySelectorAll('main .section h2')).map((link) => {
+    const u = new URL(window.location.href);
+    u.hash = link.id;
+    return {
+      href: u.toString(),
+      label: link.textContent,
+    };
+  });
 
   const CTALink = links.pop();
 
