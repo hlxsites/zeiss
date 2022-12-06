@@ -182,10 +182,9 @@ function decorateInPageNavigation(block) {
  * decorates the navigation block
  * @param {Element} block The navigation block element
  */
-
- export default async function decorate(block) {
+export default async function decorate(block) {
   // dirty: postpone to let other blocks recreate their h2s.
   window.setTimeout(() => {
     decorateInPageNavigation(block);
   }, 1000);
- }
+}
