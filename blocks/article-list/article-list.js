@@ -45,7 +45,7 @@ function articleTemplate(article) {
                         </div>`;
 }
 
-function template(articles) {
+function template(articles, title) {
   return `<div class="featured-articles-with-teaser featured-articles-with-teaser--background-grey">
     <div class="grid__container">
         <div class="grid__structure">
@@ -58,7 +58,7 @@ function template(articles) {
                                     <div class="headline hl-l headline--align-center    hl--sub-xs">
                                         <span>
                                             <h2>
-                                                <span class="headline__main">Weitere Artikel</span>
+                                                <span class="headline__main">${title || 'Weitere Artikel'}</span>
                                             </h2>
                                         </span>
                                     </div>
@@ -123,6 +123,6 @@ export default async function decorate(block) {
   const articles = data
     .filter((article) => article.path !== window.location.pathname)
     .slice(0, limit);
-  block.innerHTML = template(articles);
+  block.innerHTML = template(articles, config.title);
   decorateIcons(block, true);
 }
