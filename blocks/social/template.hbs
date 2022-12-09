@@ -1,0 +1,22 @@
+<div class="page-utility-bar grid__container">
+  <div class="grid__structure">
+
+    <hr class="divider divider--dark">
+
+    <div class="page-utility-bar__label">{{title}}</div>
+
+    <div class="page-utility-bar__share-container">
+      <div class="share">
+        {{#each items}}
+
+        <a data-type="{{type}}" aria-label="${label}" class="plain-link share__link" target="_blank" href="{{href}}" title="{{label}}">
+          <span class="icon icon-{{icon}}"></span>
+        </a>
+        {{/each}}
+      </div>
+    </div>
+
+    <hr class="divider">
+
+  </div>
+</div>
