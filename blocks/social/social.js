@@ -1,31 +1,6 @@
 import { decorateIcons } from '../../scripts/lib-franklin.js';
 import { socials, addClipboardInteraction } from '../../scripts/utils.js';
-
-function template(props) {
-  return `
-    <div class="page-utility-bar grid__container">
-      <div class="grid__structure">
-      
-        <hr class="divider divider--dark">
-        
-        <div class="page-utility-bar__label">${props.title}</div>
-
-        <div class="page-utility-bar__share-container">
-          <div class="share">
-            ${props.items.map((item) => `
-            <a data-type="${item.type}" aria-label="${item.label}" class="plain-link share__link" target="_blank" href="${item.href}" title="${item.label}">
-              <span class="icon icon-${item.icon}"></span>
-            </a>
-            `).join('')}
-          </div>
-        </div>
-
-        <hr class="divider">
-        
-      </div>
-    </div>
-  `;
-}
+import template from './template.js';
 
 /**
  * decorates the social block
@@ -33,9 +8,11 @@ function template(props) {
  */
 
 export default async function decorate(block) {
-  block.innerHTML = template({
+  Handlebars.partials['social'] = Handlebars.template(template);
+  
+  block.innerHTML = Handlebars.partials['social']({
     title: block.textContent.trim(),
-    items: socials,
+    items: socials
   });
 
   decorateIcons(block, true);
