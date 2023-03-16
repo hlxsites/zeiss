@@ -110,4 +110,21 @@ function customLogic(main, document) {
   // Add section break after header
   document.querySelector('.general-article-stage').after(document.createElement('hr'));
 
+  // Add cards block for media
+  if (document.querySelector('.text-media-grid')) {
+    const cells = [['cards']];
+    document.querySelectorAll('.text-media-grid .text-media-item-vertical').forEach((item) => {
+      const image = item.querySelector('.text-media-item-vertical__media figure img');
+      const src = JSON.parse(image.getAttribute('src')).max;
+      const cardImg = document.createElement('img');
+      cardImg.src = src;
+
+      const text = item.querySelector('.text-media-item-vertical__text p');
+      const row = [cardImg, text.textContent];
+      cells.push(row);
+    });
+    const table = WebImporter.DOMUtils.createTable(cells, document);
+    document.querySelector('.text-media-grid').replaceWith(table);
+  }
+
 }
