@@ -5,12 +5,8 @@ function addCollapseListener(collapseBlock) {
   const collapseButton = collapseBlock.querySelector('div:nth-child(4)');
 
   expandButton.addEventListener('click', () => {
-    let height = 0;
-    const paragraphs = expandableText.querySelectorAll('p');
-    for (let i = 0; i < paragraphs.length; i += 1) {
-      height += paragraphs[i].getBoundingClientRect().height;
-    }
-    height += collapseButton.getBoundingClientRect().height
+    const height = collapseBlock.querySelector('div:nth-child(2) > div').clientHeight
+        + collapseButton.getBoundingClientRect().height
         + parseFloat(getComputedStyle(expandableText).paddingBottom);
     expandableText.style.height = `${height}px`;
     collapsibleSection.classList.remove('collapsed-text');
