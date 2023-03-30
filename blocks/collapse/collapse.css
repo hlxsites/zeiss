@@ -1,12 +1,40 @@
-.text-block__expandable-area {
+.section {
+  display: inline-block;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-left: var(--grid-margin);
+  padding-right: var(--grid-margin);
+  max-width: 102rem;
+  box-sizing: border-box;
+}
+
+.collapse > div:nth-child(1) {
+  margin-bottom: var(--spacing-vertical-s);
+  text-align: left;
+  color: var(--headline-color);
+  font-size: 1.75rem;
+  font-family: var(--font-family-frutiger);
+  font-weight: 700;
+  font-style: normal;
+  line-height: 2rem;
+  letter-spacing: 0.01em;
+}
+
+.collapse > div:nth-child(2) {
   height: calc(var(--spacing-vertical-xxl) + 3rem);
   min-height: calc(var(--spacing-vertical-xxl) + 3rem);
   padding-bottom: var(--spacing-vertical-m);
+  font-family: var(--font-family-frutiger);
+  transition: height 0.5s ease-out;
   overflow: hidden;
-  position: relative
+  position: relative;
 }
 
-.text-block__expandable-area::after {
+.expanded-text .collapse > div:nth-child(2) {
+  max-height: none;
+}
+
+.collapsed-text .collapse > div:nth-child(2)::after {
   content: "";
   position: absolute;
   left: 0;
@@ -15,26 +43,44 @@
   height: var(--spacing-vertical-xxl);
   opacity: 1;
   transition: opacity .2s ease-in-out;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--bg-color-primary) 60%)
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0%), var(--bg-color-primary) 60%);
 }
 
-.text-block--expanded .text-block__expandable-area::after {
+.expanded-text .collapse > div:nth-child(2)::after {
   opacity: 0;
   pointer-events: none
 }
 
-.text-block__button {
-  padding-top: var(--spacing-vertical-s)
+.collapsed-text .collapse > div:nth-child(3), .expanded-text .collapse > div:nth-child(4) {
+  font-family: var(--font-family-frutiger);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--button-tertiary-text-default);
+  padding-bottom: 0.1875rem;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
 }
 
-.text-block__buttonToggle--hidden {
-  display: none
+.expanded-text .collapse > div:nth-child(3), .collapsed-text .collapse > div:nth-child(4) {
+  display:none;
 }
 
-.text-block__button {
-  padding-top: var(--spacing-vertical-s)
+.collapse > div:nth-child(3)::after, .collapse > div:nth-child(4)::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--button-tertiary-text-default);
+  transform-origin: bottom right;
+  transition: transform 0.5s ease-out;
+  font-weight: 500;
 }
 
-.text-block__buttonToggle--hidden {
-  display: none
+.collapse > div:nth-child(3):hover::after, .collapse > div:nth-child(4):hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
