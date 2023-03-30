@@ -7,10 +7,11 @@ function addCollapseListener(collapseBlock) {
   expandButton.addEventListener('click', () => {
     let height = 0;
     const paragraphs = expandableText.querySelectorAll('p');
-    for (let i = 0; i < paragraphs.length; i++){
+    for (let i = 0; i < paragraphs.length; i += 1) {
       height += paragraphs[i].getBoundingClientRect().height;
     }
-    height += collapseButton.getBoundingClientRect().height + parseFloat(getComputedStyle(expandableText).paddingBottom);
+    height += collapseButton.getBoundingClientRect().height
+        + parseFloat(getComputedStyle(expandableText).paddingBottom);
     expandableText.style.height = `${height}px`;
     collapsibleSection.classList.remove('collapsed-text');
     collapsibleSection.classList.add('expanded-text');
@@ -24,5 +25,6 @@ function addCollapseListener(collapseBlock) {
 }
 
 export default function decorate(block) {
-    addCollapseListener(block);
+  addCollapseListener(block);
 }
+
