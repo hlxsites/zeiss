@@ -27,4 +27,3 @@ function addCollapseListener(collapseBlock) {
 export default function decorate(block) {
   addCollapseListener(block);
 }
-
