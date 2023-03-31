@@ -58,7 +58,7 @@
   color: var(--button-tertiary-text-default);
   padding-bottom: 0.1875rem;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   position: relative;
 }
 
@@ -90,6 +90,7 @@
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+  cursor: pointer;
 }
 
 .up {
