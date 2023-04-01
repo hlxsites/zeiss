@@ -1,5 +1,5 @@
 .section {
-  display: inline-block;
+  display: block;
   flex-direction: column;
   margin: 0 auto;
   padding-left: var(--grid-margin);
@@ -58,8 +58,10 @@
   color: var(--button-tertiary-text-default);
   padding-bottom: 0.1875rem;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   position: relative;
+  margin-bottom: var(--spacing-vertical-s);
+  vertical-align: baseline;
 }
 
 .expanded-text .collapse > div:nth-child(3), .collapsed-text .collapse > div:nth-child(4) {
@@ -90,6 +92,10 @@
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  margin-left: 7px;
 }
 
 .up {
