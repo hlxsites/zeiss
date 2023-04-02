@@ -1,9 +1,10 @@
 .section {
   display: block;
   flex-direction: column;
-  margin: 0 auto;
   padding-left: var(--grid-margin);
   padding-right: var(--grid-margin);
+  margin-top: var(--spacing-vertical-xxl);
+  margin-bottom: var(--spacing-vertical-xxl);
   max-width: 102rem;
   box-sizing: border-box;
 }
@@ -56,7 +57,7 @@
   font-weight: 500;
   font-size: 1rem;
   color: var(--button-tertiary-text-default);
-  padding-bottom: 0.1875rem;
+  padding-bottom: var(--spacing-vertical-m);
   cursor: pointer;
   display: inline-flex;
   position: relative;
