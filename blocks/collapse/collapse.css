@@ -6,6 +6,8 @@
   margin-top: var(--spacing-vertical-xxl);
   margin-bottom: var(--spacing-vertical-xxl);
   max-width: 102rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.5px;
   box-sizing: border-box;
 }
 
