@@ -5,6 +5,8 @@
   padding-right: var(--grid-margin);
   margin-top: var(--spacing-vertical-xxl);
   margin-bottom: var(--spacing-vertical-xxl);
+  margin-block-start: 1em;
+  margin-block-end: 1em;
   max-width: 102rem;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
