@@ -4,6 +4,7 @@
   margin:var(--spacing-vertical-xxl) 1.5rem;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
+  width: 100%;
   max-width: 102rem;
   box-sizing: border-box;
 }
@@ -11,36 +12,42 @@
 @media (min-width: 22.5rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 1.5rem;
+    width: 22.5rem;
   }
 }
 
 @media (min-width: 48rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 2rem;
+    width: 48rem;
   }
 }
 
 @media (min-width: 64rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 2rem;
+    width: 64rem;
   }
 }
 
 @media (min-width: 80rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 4rem;
+    max-width: 80rem;
   }
 }
 
 @media (min-width: 90rem) {
   .section {
-    margin:var(--spacing-vertical-xxl) 6rem;
+    margin:var(--spacing-vertical-xxl) 4rem;
+    max-width: 90rem;
   }
 }
 
 @media (min-width: 120rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 6rem;
+    max-width: 102rem;
   }
 }
 
