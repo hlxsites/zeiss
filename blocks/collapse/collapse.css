@@ -32,14 +32,14 @@
 @media (min-width: 80rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 4rem;
-    max-width: 11.18rem;
+    width: 11.18rem;
   }
 }
 
 @media (min-width: 90rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 4rem;
-    max-width: 19.5rem;
+    width: 19.5rem;
   }
 }
 
