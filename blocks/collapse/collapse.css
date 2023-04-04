@@ -4,7 +4,6 @@
   margin:var(--spacing-vertical-xxl) 1.5rem;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
-  width: 100%;
   max-width: 102rem;
   box-sizing: border-box;
 }
@@ -33,21 +32,21 @@
 @media (min-width: 80rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 4rem;
-    max-width: 80rem;
+    max-width: 11.18rem;
   }
 }
 
 @media (min-width: 90rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 4rem;
-    max-width: 90rem;
+    max-width: 19.5rem;
   }
 }
 
 @media (min-width: 120rem) {
   .section {
     margin:var(--spacing-vertical-xxl) 6rem;
-    max-width: 102rem;
+    width: 44rem;
   }
 }
 
