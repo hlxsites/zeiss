@@ -1,4 +1,4 @@
-.section {
+.section.collapse-container {
   display: block;
   margin: auto;
   line-height: 1.5rem;
@@ -8,37 +8,37 @@
 }
 
 @media (min-width: 22.5rem) {
-  .section {
+  .section.collapse-container {
     width: calc(100vw - 3rem);
   }
 }
 
 @media (min-width: 48rem) {
-  .section {
+  .section.collapse-container {
     width:  calc(100vw - 4rem);
   }
 }
 
 @media (min-width: 64rem) {
-  .section {
+  .section.collapse-container {
     width: calc((100vw - 4.75rem) * 2/3);
   }
 }
 
 @media (min-width: 80rem) {
-  .section {
+  .section.collapse-container {
     width: calc((100vw - 8.75rem) * 2/3);
   }
 }
 
 @media (min-width: 90rem) {
-  .section {
+  .section.collapse-container {
     width: calc((100vw - 12.75rem) * 2/3);
   }
 }
 
 @media (min-width: 102rem) {
-  .section {
+  .section.collapse-container{
     width: 59.5rem;
   }
 }
