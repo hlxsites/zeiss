@@ -6,10 +6,10 @@ sampleRUM('cwv');
 
 // add more delayed functionality here
 
-// Initialize the data layer for Google Tag Manager
-/* global userdata */
-/* eslint no-undef: "error" */
-const dataLayerObject = () => {
+function loadGoogleTagManager() {
+  // Initialize the data layer
+  /* global userdata */
+  /* eslint no-undef: "error" */
   const locale = getMetadata('locale');
   const pageCountry = {
     en: 'INT',
@@ -53,11 +53,12 @@ const dataLayerObject = () => {
   } else {
     conf.userLoginState = 'false';
   }
-  return [conf];
-};
 
-window.dataLayer = window.dataLayer || dataLayerObject();
+  window.dataLayer = [conf];
 
-// Include Google Tag Manager
-// eslint-disable-next-line
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WWQQS7V');
+  // Include the manager
+  // eslint-disable-next-line
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WWQQS7V');
+}
+
+loadGoogleTagManager();
