@@ -1,7 +1,6 @@
 .section {
   display: block;
-  margin:var(--spacing-vertical-xxl) 1.5rem;
-  vertical-align: baseline;
+  margin: auto;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
   max-width: 102rem;
