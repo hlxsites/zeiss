@@ -1,11 +1,46 @@
-.section {
+.section.collapse-container {
   display: block;
-  flex-direction: column;
-  margin: 0 auto;
-  padding-left: var(--grid-margin);
-  padding-right: var(--grid-margin);
+  margin: auto;
+  line-height: 1.5rem;
+  letter-spacing: 0.5px;
   max-width: 102rem;
   box-sizing: border-box;
+}
+
+@media (min-width: 22.5rem) {
+  .section.collapse-container {
+    width: calc(100vw - 3rem);
+  }
+}
+
+@media (min-width: 48rem) {
+  .section.collapse-container {
+    width:  calc(100vw - 4rem);
+  }
+}
+
+@media (min-width: 64rem) {
+  .section.collapse-container {
+    width: calc((100vw - 4.75rem) * 2/3);
+  }
+}
+
+@media (min-width: 80rem) {
+  .section.collapse-container {
+    width: calc((100vw - 8.75rem) * 2/3);
+  }
+}
+
+@media (min-width: 90rem) {
+  .section.collapse-container {
+    width: calc((100vw - 12.75rem) * 2/3);
+  }
+}
+
+@media (min-width: 102rem) {
+  .section.collapse-container{
+    width: 59.5rem;
+  }
 }
 
 .collapse > div:nth-child(1) {
@@ -56,7 +91,7 @@
   font-weight: 500;
   font-size: 1rem;
   color: var(--button-tertiary-text-default);
-  padding-bottom: 0.1875rem;
+  padding-bottom: var(--spacing-vertical-m);
   cursor: pointer;
   display: inline-flex;
   position: relative;
