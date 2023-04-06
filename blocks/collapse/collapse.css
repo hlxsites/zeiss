@@ -1,7 +1,7 @@
 .section {
   display: block;
-  flex-direction: column;
   margin:var(--spacing-vertical-xxl) 1.5rem;
+  vertical-align: baseline;
   line-height: 1.5rem;
   letter-spacing: 0.5px;
   max-width: 102rem;
@@ -10,43 +10,37 @@
 
 @media (min-width: 22.5rem) {
   .section {
-    margin:var(--spacing-vertical-xxl) 1.5rem;
-    width: 22.5rem;
+    width: calc(100vw - 3rem);
   }
 }
 
 @media (min-width: 48rem) {
   .section {
-    margin:var(--spacing-vertical-xxl) 2rem;
-    width: 48rem;
+    width:  calc(100vw - 4rem);
   }
 }
 
 @media (min-width: 64rem) {
   .section {
-    margin:var(--spacing-vertical-xxl) 2rem;
-    width: 64rem;
+    width: calc((100vw - 4.75rem) * 2/3);
   }
 }
 
 @media (min-width: 80rem) {
   .section {
-    margin:var(--spacing-vertical-xxl) 4rem;
-    width: 11.18rem;
+    width: calc((100vw - 8.75rem) * 2/3);
   }
 }
 
 @media (min-width: 90rem) {
   .section {
-    margin:var(--spacing-vertical-xxl) 4rem;
-    width: 19.5rem;
+    width: calc((100vw - 12.75rem) * 2/3);
   }
 }
 
-@media (min-width: 120rem) {
+@media (min-width: 102rem) {
   .section {
-    margin:var(--spacing-vertical-xxl) 6rem;
-    width: 44rem;
+    width: 59.5rem;
   }
 }
 
