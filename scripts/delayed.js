@@ -9,8 +9,8 @@ sampleRUM('cwv');
 // Initialize the data layer for Google Tag Manager
 /* global userdata */
 /* eslint no-undef: "error"*/
-async function dataLayerObject () {
-  const locale = getMetadata('locale');
+function dataLayerObject () {
+  const locale = 'en';//getMetadata('locale');
   const pageCountry = {
     en: 'INT',
     de: 'DE',
@@ -56,7 +56,7 @@ async function dataLayerObject () {
   return [conf];
 };
 
-window.dataLayer = window.dataLayer || await dataLayerObject();
+window.dataLayer = window.dataLayer || dataLayerObject();
 
 // Include Google Tag Manager
 // eslint-disable-next-line
