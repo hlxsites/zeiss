@@ -26,3 +26,7 @@ indices:
       readingtime:
         select: head > meta[name="readingtime"]
         value: attribute(el, "content")
+      tags:
+        select: head > meta[property="article:tag"]
+        values: |
+          attribute(el, 'content')
