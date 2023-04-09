@@ -6,10 +6,10 @@ function addCollapseListener(collapseBlock) {
   const arrowUpElement = document.createElement('div');
   if (!expandButton && !collapseButton) return;
   arrowUpElement.classList.add('arrow', 'down');
-  expandButton.appendChild(arrowUpElement);
+  expandButton.querySelector('div').appendChild(arrowUpElement);
   const arrowDownElement = document.createElement('div');
   arrowDownElement.classList.add('arrow', 'up');
-  collapseButton.appendChild(arrowDownElement);
+  collapseButton.querySelector('div').appendChild(arrowDownElement);
 
   expandButton.addEventListener('click', () => {
     const height = collapseBlock.querySelector('div:nth-child(2) > div').clientHeight
