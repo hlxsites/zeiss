@@ -2064,9 +2064,6 @@ sub {
     margin: auto;
     max-width: 102rem;
     box-sizing: border-box;
-}
-
-.section.collapse-container {
     line-height: 1.5rem;
     letter-spacing: 0.5px;
     padding-bottom: var(--spacing-vertical-m);
