@@ -5,13 +5,14 @@ function template(items) {
   return `<div class="profile-collection ">
     <div class="heading-slot"></div>
     <div class="profile-collection__settings" data-primary-count="3">
+        <div class="grid__container">
             <div class="profile-collection__content profile-collection__content-medium">
                 <div class="profile-collection__section profile-collection__section--visible">
-                    <div class="profile-collection__structure profile-collection__structure--primary">
+                    <div class="grid__structure profile-collection__structure profile-collection__structure--primary">
                         ${items.map((item) => `<div class="profile-collection__item">
                             <div data-module="Profile" class="profile profile--primary">
-                                <div class="profile__grid-structure">
-                                    <div class="profile__column--content">
+                                <div class="grid__structure profile__grid-structure">
+                                    <div class="grid__column profile__column--content">
                                         <div class="headline hl-xs    profile__headline ">
                                             <span>
                                                 <span class="headline__eyebrow text--eyebrow">Pressekontakt</span>
@@ -64,18 +65,19 @@ function template(items) {
                             </div>
                         </div>`).join('')}
                     </div>
-                    <div class="profile-collection__structure profile-collection__structure--secondary">
+                    <div class="grid__structure profile-collection__structure profile-collection__structure--secondary">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>`;
 }
 
 export default async function decorate(block) {
   const heading = block.querySelector('h2');
   const contacts = [];
-  block.querySelectorAll('a').forEach((a) => {
+  block.querySelectorAll('p > a').forEach((a) => {
     contacts.push(a.href);
   });
 
