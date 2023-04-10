@@ -22,7 +22,6 @@ function template(info) {
                     ${info.Date}
                     · ${info.Duration} Lesedauer
                 </div>
-                </div>
             </div>
         </div>
     </div>
