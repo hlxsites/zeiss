@@ -142,8 +142,8 @@ a {
   border-width: 0 2px 2px 0;
   display: inline-block;
   cursor: pointer;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   margin-left: 10px;
 }
 
@@ -153,4 +153,5 @@ a {
 
 .down {
   transform: rotate(45deg);
+  margin-bottom: 3px;
 }
