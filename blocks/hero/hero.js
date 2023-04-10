@@ -3,9 +3,12 @@ import { socials, addClipboardInteraction } from '../../scripts/utils.js';
 
 function template(info) {
   return `<div class="general-article-stage">
-    <div xmlns="http://www.w3.org/1999/html">
+    <div class="grid__container" xmlns="http://www.w3.org/1999/html">
+        <div class="grid__structure">
+            <div class="grid__column grid__column--100">
                 <hr class="divider divider--dark">
-            <div class="general-article-stage__column-content">
+            </div>
+            <div class="grid__column general-article-stage__column-content">
                 <div class="headline hl-xxl hl--sub-m">
                     <span>
                         <span class="headline__eyebrow text--eyebrow">Presseinformation</span>
@@ -19,8 +22,19 @@ function template(info) {
                     ${info.Date}
                     · ${info.Duration} Lesedauer
                 </div>
+                <div class="general-article-stage__share">
+                    <div class="share">
+                      ${info.socials.map((item) => `
+                      <a data-type="${item.type}" aria-label="${item.label}" class="plain-link share__link" target="_blank" href="${item.href}" title="${item.label}">
+                        <span class="icon icon-${item.icon}"></span>
+                      </a>
+                      `).join('')}
+                    </div>
+                </div>
             </div>
-    </div>`;
+        </div>
+    </div>
+</div>`;
 }
 
 export default async function decorate(block) {
