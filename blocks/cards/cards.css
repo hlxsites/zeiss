@@ -44,7 +44,9 @@
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    /* Below 48rem, do not show more than 1 card in a row */
+    grid-template-columns: repeat(auto-fit, minmax(calc((48rem - 2 * var(--section-margin) - var(--grid-gutter)) / 2), 1fr));
     grid-gap: var(--grid-gutter);
   }
 
