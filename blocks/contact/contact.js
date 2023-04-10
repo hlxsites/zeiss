@@ -77,7 +77,7 @@ function template(items) {
 export default async function decorate(block) {
   const heading = block.querySelector('h2');
   const contacts = [];
-  block.querySelectorAll('p > a').forEach((a) => {
+  block.querySelectorAll('p').forEach((a) => {
     contacts.push(a.href);
   });
 
