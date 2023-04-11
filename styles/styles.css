@@ -195,18 +195,6 @@ main .section {
     letter-spacing: 0.5px;
 }
 
-@media (min-width: 22.5rem) {
-    .section {
-        width: calc(100vw - 3rem);
-    }
-}
-
-@media (min-width: 48rem) {
-    .section {
-        width:  calc(100vw - 4rem);
-    }
-}
-
 @media (min-width: 64rem) {
     .section {
         width: calc((100vw - 4.75rem) * 2/3);
@@ -227,6 +215,6 @@ main .section {
 
 @media (min-width: 102rem) {
     .section {
-        width: 59.5rem;
+        width: 55.5rem;
     }
 }
