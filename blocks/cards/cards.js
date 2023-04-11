@@ -8,7 +8,12 @@ export default function decorate(block) {
     li.innerHTML = row.innerHTML;
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+      else {
+        div.className = 'cards-card-body';
+        div.classList.add('text');
+        div.classList.add('text--body-m');
+        div.classList.add('spacing--s');
+      }
     });
     ul.append(li);
   });

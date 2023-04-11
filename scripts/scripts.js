@@ -79,7 +79,7 @@ async function loadEager(doc) {
 export function addFavIcon(href) {
   const link = document.createElement('link');
   link.rel = 'icon';
-  link.type = 'image/svg+xml';
+  link.type = 'image/x-icon';
   link.href = href;
   const existingLink = document.querySelector('head link[rel="icon"]');
   if (existingLink) {
@@ -101,29 +101,31 @@ function decorateContentBlocks(main) {
   `);
 
   // Start with 1 to ignore hero
-  for (let i = 1; i < sections.length; i += 1) {
+  for (let i = 0; i < sections.length; i += 1) {
     const section = sections[i];
-    section.classList.add('text-block');
-
     const content = section.querySelector('.default-content-wrapper');
-    content.classList.add('text');
-    content.classList.add('text--body-m');
+    if (content) {
+      section.classList.add('text-block');
 
-    const wrapper = template.cloneNode(true);
-    wrapper.querySelector('.grid__column--inner').append(content);
-    section.append(wrapper);
+      content.classList.add('text');
+      content.classList.add('text--body-m');
 
-    const h2 = section.querySelector('h2');
-    if (h2) {
-      h2.classList.add('headline__main');
-      h2.classList.add('text-block__headline');
-      h2.classList.add('headline');
-      h2.classList.add('hl-l');
+      const wrapper = template.cloneNode(true);
+      wrapper.querySelector('.grid__column--inner').append(content);
+      section.append(wrapper);
+
+      const h2 = section.querySelector('h2');
+      if (h2) {
+        h2.classList.add('headline__main');
+        h2.classList.add('text-block__headline');
+        h2.classList.add('headline');
+        h2.classList.add('hl-l');
+      }
+
+      section.querySelectorAll('strong').forEach((strong) => {
+        strong.classList.add('text--bold');
+      });
     }
-
-    section.querySelectorAll('strong').forEach((strong) => {
-      strong.classList.add('text--bold');
-    });
   }
 }
 
@@ -147,7 +149,7 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
+  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.ico`);
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));

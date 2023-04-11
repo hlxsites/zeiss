@@ -1,31 +1,61 @@
+/* grid */
+:root {
+  --grid-gutter: 1rem;
+}
+
+@media (min-width: 22.5rem) {
+  :root {
+    --grid-gutter: 1rem;
+  }
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --grid-gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --grid-gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --grid-gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 90rem) {
+  :root {
+    --grid-gutter: 1.5rem;
+  }
+}
+
+@media (min-width: 120rem) {
+  :root {
+    --grid-gutter: 1.5rem;
+  }
+}
+
 .cards > ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 16px;
-}
 
-.cards > ul > li {
-    border: 1px solid var(--highlight-background-color);
-    background-color: var(--background-color)
-}
+    /* Below 48rem, do not show more than 1 card in a row */
+    grid-template-columns: repeat(auto-fit, minmax(calc((48rem - 2 * var(--section-margin) - var(--grid-gutter)) / 2), 1fr));
+    grid-gap: var(--grid-gutter);
+  }
 
-.cards .cards-card-body {
-    margin: 16px;
-}
+  .cards .cards-card-body {
+    margin-top: var(--spacing-vertical-m);
+  }
 
-.cards .cards-card-image {
-    line-height: 0;
-}
-
-.cards .cards-card-body > *:first-child {
-    margin-top: 0;
-}
-
-.cards > ul > li img {
+  .cards > ul > li img {
     width: 100%;
-    aspect-ratio: 4 / 3;
     object-fit: cover;
-}
+  }
+
