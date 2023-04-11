@@ -5,6 +5,7 @@
     --text-color-text: var(--text-color-body);
     --spacing-vertical-m: 1.5rem;
     --spacing-vertical-xxl: 3.5rem;
+    --spacing-vertical-s: 1rem;
     --section-margin: 1.5rem;
 }
 
@@ -54,6 +55,16 @@ main .section {
     padding-right: var(--section-margin);
     max-width: 102rem;
     box-sizing: border-box
+}
+
+.block:not(.header):not(.cards) {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-gap: var(--grid-gutter);
+    row-gap: 0;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    grid-template-rows: auto
 }
 
 
@@ -188,6 +199,56 @@ main .section {
         line-height: 6.5rem;
         letter-spacing: 1.5px
     }
+}
+
+.text--eyebrow {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.5px;
+    font-family: var(--font-family-frutiger);
+    font-weight: 500;
+    font-style: normal
+}
+
+.text--eyebrow-l,
+.text--eyebrow-l--light,
+.text--eyebrow-s,
+.text--eyebrow-s--light {
+    text-transform: uppercase
+}
+
+.text--eyebrow-l {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.5px;
+    font-family: var(--font-family-frutiger);
+    font-weight: 500;
+    font-style: normal
+}
+
+@media (min-width: 64rem) {
+    .text--eyebrow-l {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        letter-spacing: 0.5px;
+        font-family: var(--font-family-frutiger);
+        font-weight: 500;
+        font-style: normal
+    }
+}
+
+.text--eyebrow-s {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0.5px;
+    font-family: var(--font-family-frutiger);
+    font-weight: 500;
+    font-style: normal
+}
+
+.general-article-stage__details {
+    margin-top: var(--spacing-vertical-s)
 }
 
 @media (min-width: 64rem) {
