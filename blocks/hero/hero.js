@@ -1,4 +1,4 @@
-import { decorateIcons, getMetadata} from '../../scripts/lib-franklin.js';
+import { decorateIcons, getMetadata } from '../../scripts/lib-franklin.js';
 import { socials, addClipboardInteraction } from '../../scripts/utils.js';
 
 function template(info) {
