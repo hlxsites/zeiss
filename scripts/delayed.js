@@ -28,35 +28,6 @@ export function pathItem(pathname, index) {
   return pathname.split('/')[index] || '';
 }
 
-export function loadGoogleTagManager(href) {
-  // Initialize the data layer
-  /* eslint no-undef: "error" */
-  const url = new URL(href);
-  const locale = getMetadata('locale');
-  const pageCountry = {
-    en: 'INT',
-    de: 'DE',
-  };
-  const conf = {
-    pageArea: 'web',
-    pageCountry: pageCountry[locale],
-    pageEnvironment: pageEnvironment(url.hostname),
-    pageIdentifier: 'main',
-    pageLanguage: locale,
-    pageLocation: 'ALL_General-Article_002',
-    pageName: url.pathname,
-    pagePool: pathItem(url.pathname, 4),
-    pageTags: '',
-    contentHierarchy1: pathItem(url.pathname, 3),
-    productName: '',
-  };
-  window.dataLayer = [conf];
-
-  // Include the manager
-  // eslint-disable-next-line
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WWQQS7V');
-}
-
 // eslint-disable-next-line import/prefer-default-export
 export function getCookieConsentID(hostname) {
   if (hostname === undefined) {
@@ -93,6 +64,35 @@ export function loadCookieConsent(doc, hostname) {
     alink.setAttribute('href', '#');
     alink.setAttribute('onclick', 'OneTrust.ToggleInfoDisplay();');
   }
+}
+
+function loadGoogleTagManager(href) {
+  // Initialize the data layer
+  /* eslint no-undef: "error" */
+  const url = new URL(href);
+  const locale = getMetadata('locale');
+  const pageCountry = {
+    en: 'INT',
+    de: 'DE',
+  };
+  const conf = {
+    pageArea: 'web',
+    pageCountry: pageCountry[locale],
+    pageEnvironment: pageEnvironment(url.hostname),
+    pageIdentifier: 'main',
+    pageLanguage: locale,
+    pageLocation: 'ALL_General-Article_002',
+    pageName: url.pathname,
+    pagePool: pathItem(url.pathname, 4),
+    pageTags: '',
+    contentHierarchy1: pathItem(url.pathname, 3),
+    productName: '',
+  };
+  window.dataLayer = [conf];
+
+  // Include the manager
+  // eslint-disable-next-line
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WWQQS7V');
 }
 
 // The OneTrust website says to define this function like this.
