@@ -95,9 +95,9 @@ export function loadCookieConsent(doc, hostname) {
   }
 }
 
-loadCookieConsent(document, window.location.hostname);
-loadGoogleTagManager(window.location.href);
-
 // The OneTrust website says to define this function like this.
 // eslint-disable-next-line no-unused-vars
 function OptanonWrapper() { }
+
+loadCookieConsent(document, window.location.hostname);
+loadGoogleTagManager(window.location.href);
