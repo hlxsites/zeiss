@@ -57,7 +57,7 @@ main .section {
     box-sizing: border-box
 }
 
-.block:not(.header):not(.cards) {
+.block:not(.header):not(.cards):not(.collapse) {
     position: relative;
     width: 100%;
     display: grid;

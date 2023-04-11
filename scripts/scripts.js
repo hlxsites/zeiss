@@ -93,14 +93,6 @@ export function addFavIcon(href) {
 function decorateContentBlocks(main) {
   const sections = [...main.querySelectorAll(':scope > div[class="section"]')];
 
-  const template = document.createRange().createContextualFragment(`
-    <div class="grid__container">
-      <div class="grid__structure">
-        <div class="grid__column grid__column--inner"></div>
-      </div>
-    </div>
-  `);
-
   // Start with 1 to ignore hero
   for (let i = 0; i < sections.length; i += 1) {
     const section = sections[i];
@@ -110,10 +102,6 @@ function decorateContentBlocks(main) {
 
       content.classList.add('text');
       content.classList.add('text--body-m');
-
-      const wrapper = template.cloneNode(true);
-      wrapper.querySelector('.grid__column--inner').append(content);
-      section.append(wrapper);
 
       const h2 = section.querySelector('h2');
       if (h2) {
