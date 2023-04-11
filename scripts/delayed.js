@@ -23,10 +23,9 @@ export function pageEnvironment(hostname) {
   }
 }
 
-export function contentHierarchy1(pathname) {
-  // Capture 3rd level path item from the root
-  // e.g. 'news-und-events' from /de/semiconductor-manufacturing-technology/news-und-events
-  return pathname.split('/')[3] || '';
+export function pathItem(pathname, index) {
+  // Capture the path item at the given index
+  return pathname.split('/')[index] || '';
 }
 
 function loadGoogleTagManager() {
@@ -47,9 +46,9 @@ function loadGoogleTagManager() {
     pageLanguage: locale,
     pageLocation: 'ALL_General-Article_002',
     pageName: url.pathname,
-    pagePool: 'smt',
+    pagePool: pathItem(url.pathname, 4),
     pageTags: '',
-    contentHierarchy1: contentHierarchy1(url.pathname),
+    contentHierarchy1: pathItem(url.pathname, 3),
     productName: '',
   };
   if (typeof userdata !== 'undefined' && userdata.accountid) {

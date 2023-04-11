@@ -3,6 +3,8 @@
 
 import { expect } from '@esm-bundle/chai';
 
+const PATH = '/de/semiconductor-manufacturing-technology/news-und-events/smt-pressemeldung/zeiss-trumpf-und-fraunhofer-mit-deutschem-zukunftspreis-ausgezeichnet';
+
 let delayed;
 
 describe('Delayed customer features', () => {
@@ -16,8 +18,15 @@ describe('Delayed customer features', () => {
     expect(delayed.pageEnvironment('localhost')).to.equal('local_publish');
   });
 
+  it('Undefined Path Item', async () => {
+    expect(delayed.pathItem(PATH, 100)).to.equal('');
+  });
+
   it('Define Content Hierarchy', async () => {
-    expect(delayed.contentHierarchy1('/de/unkown')).to.equal('');
-    expect(delayed.contentHierarchy1(' /de/semiconductor/news-und-events/test')).to.equal('news-und-events');
+    expect(delayed.pathItem(PATH, 3)).to.equal('news-und-events');
+  });
+
+  it('Define Page Pool', async () => {
+    expect(delayed.pathItem(PATH, 4)).to.equal('smt-pressemeldung');
   });
 });
