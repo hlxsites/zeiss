@@ -6,10 +6,28 @@ sampleRUM('cwv');
 
 // add more delayed functionality here
 
+/**
+ * Define the environment based on the hostname
+ * @param {*} hostname
+ * @returns
+ */
+export default function pageEnvironment(hostname) {
+  switch (hostname) {
+    case 'www.zeiss.de':
+    case 'www.zeiss.com':
+      return 'prod_publish';
+    case 'localhost':
+      return 'local_publish';
+    default:
+      return 'publish';
+  }
+}
+
 function loadGoogleTagManager() {
   // Initialize the data layer
   /* global userdata */
   /* eslint no-undef: "error" */
+  const url = new URL(window.location.href);
   const locale = getMetadata('locale');
   const pageCountry = {
     en: 'INT',
@@ -18,11 +36,11 @@ function loadGoogleTagManager() {
   const conf = {
     pageArea: 'web',
     pageCountry: pageCountry[locale],
-    pageEnvironment: 'prod_publish',
+    pageEnvironment: pageEnvironment(url.hostname),
     pageIdentifier: 'main',
     pageLanguage: locale,
     pageLocation: 'ALL_General-Article_002',
-    pageName: window.location.href,
+    pageName: url.pathname,
     pagePool: 'smt',
     pageTags: '',
     contentHierarchy1: 'news-and-events',
