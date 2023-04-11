@@ -31,9 +31,10 @@ function template(info) {
 export default async function decorate(block) {
   const pub = document.querySelector('head > meta[name="publicationdate"');
   const time = document.querySelector('head > meta[name="readingtime"');
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
   let dateString = '';
   if (pub && pub.content) {
-    dateString = pub.content;
+    dateString = new Date(pub.content);
   }
   let timeString = '';
   if (time && time.content) {
@@ -42,7 +43,7 @@ export default async function decorate(block) {
   const picture = block.querySelector('picture');
   block.innerHTML = template(
     {
-      Date: dateString,
+      Date: dateString.toLocaleDateString('de-DE', options),
       Duration: timeString,
       Main: block.querySelector('h1')?.textContent || '',
       Sub: block.querySelector('h3')?.textContent || '',
