@@ -115,7 +115,7 @@ a {
   transform: scaleX(1);
 }
 
-.arrow {
+main .block.collapse .arrow {
   border: solid var(--button-tertiary-text-default);
   border-width: 0 2px 2px 0;
   display: inline-block;
