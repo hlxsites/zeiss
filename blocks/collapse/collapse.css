@@ -3,6 +3,30 @@
   letter-spacing: 0.5px;
 }
 
+@media (min-width: 64rem) {
+  .collapse-container {
+    width: calc((100vw + 1.25rem) * 2/3);
+  }
+}
+
+@media (min-width: 80rem) {
+  .collapse-container {
+    width: calc((100vw + 2.25rem) * 2/3);
+  }
+}
+
+@media (min-width: 90rem) {
+  .collapse-container {
+    width: calc((100vw + 5.25rem) * 2/3);
+  }
+}
+
+@media (min-width: 102rem) {
+  .collapse-container {
+    width: 59.5rem;
+  }
+}
+
 .collapse > div:nth-child(1) {
   margin-bottom: var(--spacing-vertical-s);
   text-align: left;

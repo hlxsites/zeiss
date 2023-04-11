@@ -250,27 +250,3 @@ main .section {
 .general-article-stage__details {
     margin-top: var(--spacing-vertical-s)
 }
-
-@media (min-width: 64rem) {
-    .section {
-        width: calc((100vw + 1.25rem) * 2/3);
-    }
-}
-
-@media (min-width: 80rem) {
-    .section {
-        width: calc((100vw + 2.25rem) * 2/3);
-    }
-}
-
-@media (min-width: 90rem) {
-    .section {
-        width: calc((100vw + 5.25rem) * 2/3);
-    }
-}
-
-@media (min-width: 102rem) {
-    .section {
-        width: 59.5rem;
-    }
-}
