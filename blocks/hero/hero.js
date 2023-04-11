@@ -1,4 +1,4 @@
-import { decorateIcons } from '../../scripts/lib-franklin.js';
+import { decorateIcons, getMetadata } from '../../scripts/lib-franklin.js';
 import { socials, addClipboardInteraction } from '../../scripts/utils.js';
 
 function template(info) {
@@ -20,7 +20,7 @@ function template(info) {
                 </div>
                 <div class="general-article-stage__details text--eyebrow">
                     ${info.Date}
-                    · ${info.Duration} Lesedauer
+                    · ${info.Duration}
                 </div>
             </div>
         </div>
@@ -29,6 +29,7 @@ function template(info) {
 }
 
 export default async function decorate(block) {
+  const locale = getMetadata('locale');
   const pub = document.querySelector('head > meta[name="publicationdate"');
   const time = document.querySelector('head > meta[name="readingtime"');
   let dateString = '';
@@ -38,6 +39,11 @@ export default async function decorate(block) {
   let timeString = '';
   if (time && time.content) {
     timeString = time.content;
+    const localisedTime = {
+      en: ' Min Read',
+      de: ' Lesedauer',
+    };
+    timeString += localisedTime[locale] || localisedTime.en;
   }
   const picture = block.querySelector('picture');
   block.innerHTML = template(
