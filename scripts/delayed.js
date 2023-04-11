@@ -28,10 +28,10 @@ export function pathItem(pathname, index) {
   return pathname.split('/')[index] || '';
 }
 
-function loadGoogleTagManager() {
+export function loadGoogleTagManager(href) {
   // Initialize the data layer
   /* eslint no-undef: "error" */
-  const url = new URL(window.location.href);
+  const url = new URL(href);
   const locale = getMetadata('locale');
   const pageCountry = {
     en: 'INT',
@@ -57,4 +57,47 @@ function loadGoogleTagManager() {
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WWQQS7V');
 }
 
-loadGoogleTagManager();
+// eslint-disable-next-line import/prefer-default-export
+export function getCookieConsentID(hostname) {
+  if (hostname === undefined) {
+    return undefined;
+  }
+
+  // The zeiss.com cookie ID
+  let csID = '8993cba0-8683-43f1-9904-d63a3e023a9c';
+  if (hostname.endsWith('.zeiss.de')) {
+    // zeiss.de has a different cookie ID
+    csID = '11dcda2f-5845-4860-b4c1-a3e63d9f163f';
+  } else if (!hostname.endsWith('.zeiss.com')) {
+    // The OneTrust documentation specifies to suffix the ID with -test when running in
+    // a dev or stage testing domain
+    // https://about.gitlab.com/handbook/marketing/digital-experience/onetrust-cookie-consent/
+    csID += '-test';
+  }
+  return csID;
+}
+
+export function loadCookieConsent(doc, hostname) {
+  const csID = getCookieConsentID(hostname);
+
+  const cookieScript = doc.createElement('script');
+  cookieScript.setAttribute('src', 'https://cdn.cookielaw.org/scripttemplates/otSDKStub.js');
+  cookieScript.setAttribute('data-document-language', 'true');
+  cookieScript.setAttribute('type', 'text/javascript');
+  cookieScript.setAttribute('charset', 'UTF-8');
+  cookieScript.setAttribute('data-domain-script', csID);
+  doc.head.appendChild(cookieScript);
+
+  const alink = doc.querySelector("a[aria-label='Trackingeinstellungen'], a[aria-label='Tracking Preferences']");
+  if (alink) {
+    alink.setAttribute('href', '#');
+    alink.setAttribute('onclick', 'OneTrust.ToggleInfoDisplay();');
+  }
+}
+
+loadCookieConsent(document, window.location.hostname);
+loadGoogleTagManager(window.location.href);
+
+// The OneTrust website says to define this function like this.
+// eslint-disable-next-line no-unused-vars
+function OptanonWrapper() { }
