@@ -126,7 +126,7 @@ const createMetadata = (main, document, url) => {
   const timeType = document.querySelector('[property=article_time_type]');
   if (timeType) {
     meta.timeType = timeType.content;
-  } 
+  }
 
   const img = document.querySelector('[property="og:image"]');
   if (img && img.content) {
