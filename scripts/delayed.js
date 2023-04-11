@@ -11,7 +11,7 @@ sampleRUM('cwv');
  * @param {*} hostname
  * @returns
  */
-export default function pageEnvironment(hostname) {
+export function pageEnvironment(hostname) {
   switch (hostname) {
     case 'www.zeiss.de':
     case 'www.zeiss.com':
@@ -21,6 +21,12 @@ export default function pageEnvironment(hostname) {
     default:
       return 'publish';
   }
+}
+
+export function contentHierarchy1(pathname) {
+  // Capture 3rd level path item from the root
+  // e.g. 'news-und-events' from /de/semiconductor-manufacturing-technology/news-und-events
+  return pathname.split('/')[3] || '';
 }
 
 function loadGoogleTagManager() {
@@ -43,7 +49,7 @@ function loadGoogleTagManager() {
     pageName: url.pathname,
     pagePool: 'smt',
     pageTags: '',
-    contentHierarchy1: 'news-and-events',
+    contentHierarchy1: contentHierarchy1(url.pathname),
     productName: '',
   };
   if (typeof userdata !== 'undefined' && userdata.accountid) {

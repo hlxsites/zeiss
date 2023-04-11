@@ -15,4 +15,9 @@ describe('Delayed customer features', () => {
     expect(delayed.pageEnvironment('www.zeiss.de')).to.equal('prod_publish');
     expect(delayed.pageEnvironment('localhost')).to.equal('local_publish');
   });
+
+  it('Define Content Hierarchy', async () => {
+    expect(delayed.contentHierarchy1('/de/unkown')).to.equal('');
+    expect(delayed.contentHierarchy1(' /de/semiconductor/news-und-events/test')).to.equal('news-und-events');
+  });
 });
