@@ -190,7 +190,6 @@ main .section {
     }
 }
 
-
 @media (min-width: 64rem) {
     .section {
         width: calc((100vw + 1.25rem) * 2/3);
