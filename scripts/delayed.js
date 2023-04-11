@@ -30,7 +30,6 @@ export function pathItem(pathname, index) {
 
 function loadGoogleTagManager() {
   // Initialize the data layer
-  /* global userdata */
   /* eslint no-undef: "error" */
   const url = new URL(window.location.href);
   const locale = getMetadata('locale');
@@ -51,32 +50,6 @@ function loadGoogleTagManager() {
     contentHierarchy1: pathItem(url.pathname, 3),
     productName: '',
   };
-  if (typeof userdata !== 'undefined' && userdata.accountid) {
-    conf.userLoginState = 'true';
-    conf.userId = userdata.accountid;
-    if (userdata.zeissid
-      && userdata.zeissid.organization
-      && userdata.zeissid.organization.zeisscustomerno) {
-      conf.zeissid = conf.zeissid || {};
-      conf.zeissid.organisation = conf.zeissid.organisation || {};
-      conf.zeissid.organisation.zeisscustomerno = userdata.zeissid.organization.zeisscustomerno;
-    }
-    if (userdata.mkto_med_myzeiss) {
-      conf.mkto_med_myzeiss = conf.mkto_med_myzeiss || {};
-      if (userdata.mkto_med_myzeiss.myZEISSInterest) {
-        conf.mkto_med_myzeiss.myZEISSInterest = userdata.mkto_med_myzeiss.myZEISSInterest;
-      }
-      if (userdata.mkto_med_myzeiss.myZEISSProfession) {
-        conf.mkto_med_myzeiss.myZEISSProfession = userdata.mkto_med_myzeiss.myZEISSProfession;
-      }
-      if (userdata.mkto_med_myzeiss.myZEISSRole) {
-        conf.mkto_med_myzeiss.myZEISSRole = userdata.mkto_med_myzeiss.myZEISSRole;
-      }
-    }
-  } else {
-    conf.userLoginState = 'false';
-  }
-
   window.dataLayer = [conf];
 
   // Include the manager
