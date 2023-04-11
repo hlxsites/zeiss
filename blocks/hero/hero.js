@@ -1,4 +1,4 @@
-import { decorateIcons } from '../../scripts/lib-franklin.js';
+import { decorateIcons, getMetadata} from '../../scripts/lib-franklin.js';
 import { socials, addClipboardInteraction } from '../../scripts/utils.js';
 
 function template(info) {
@@ -43,7 +43,7 @@ export default async function decorate(block) {
   const picture = block.querySelector('picture');
   block.innerHTML = template(
     {
-      Date: dateString.toLocaleDateString('de-DE', options),
+      Date: dateString.toLocaleDateString(getMetadata('locale'), options),
       Duration: timeString,
       Main: block.querySelector('h1')?.textContent || '',
       Sub: block.querySelector('h3')?.textContent || '',
