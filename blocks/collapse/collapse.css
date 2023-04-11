@@ -68,7 +68,7 @@ a {
   text-decoration: none;
 }
 
-.collapse.p.button-container {
+main .block.collapse p.button-container {
    margin-top: var(--spacing-vertical-s);
  }
 
