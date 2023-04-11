@@ -17,10 +17,11 @@ const LCP_BLOCKS = []; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
 
 function buildHeroBlock(main) {
-  const h1 = main.querySelector('h1');
-  const h3 = main.querySelector('h3');
+  const heroDiv = main.querySelector('div:first-of-type');
+  const h1 = heroDiv.querySelector('h1');
+  const h3 = heroDiv.querySelector('h3');
   // eslint-disable-next-line no-bitwise
-  if (h1 && h3) {
+  if (h1) {
     const parent = h1.closest('div');
     let picture;
     if (parent) {
