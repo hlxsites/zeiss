@@ -129,7 +129,7 @@ main .block.collapse .arrow {
   transform: rotate(-135deg);
 }
 
-.down {
+main .block.collapse .down {
   transform: rotate(45deg);
   margin-bottom: 3px;
 }
