@@ -1872,3 +1872,32 @@ sub {
   background-color: var(--border-color-active);
   height: 0.125rem
 }
+
+
+a {
+    font-family: var(--font-family-frutiger);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--button-tertiary-text-default);
+    position: relative;
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--button-tertiary-text-default);
+    transform-origin: bottom left;
+    transition: all ease-in-out .3s;
+    font-weight: 500;
+}
+
+a:hover::after {
+    transform: scaleX(1);
+}
+
