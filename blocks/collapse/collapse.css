@@ -63,6 +63,10 @@ main .block.collapse p.button-container {
    margin-top: var(--spacing-vertical-s);
  }
 
+main .block.collapse a {
+  font-weight: 500;
+}
+
 .expanded-text .collapse > div:nth-child(2)::after {
   opacity: 0;
   pointer-events: none
