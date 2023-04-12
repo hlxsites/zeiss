@@ -32,11 +32,11 @@ export default async function decorate(block) {
   const locale = getMetadata('locale') || 'en';
   fetchPlaceholders(`/${locale}`).then((placeholders) => {
     const pub = document.querySelector('head > meta[name="publicationdate"');
+    const time = document.querySelector('head > meta[name="readingtime"');
     let dateString = '';
     if (pub && pub.content) {
       dateString = pub.content;
     }
-    const time = document.querySelector('head > meta[name="readingtime"');
     let timeString = '';
     if (time && time.content) {
       timeString = `${time.content} ${placeholders.readingtime}`;
@@ -50,13 +50,11 @@ export default async function decorate(block) {
         socials,
       },
     );
+    const picture = block.querySelector('picture');
+    if (picture) {
+      block.querySelector('.general-article-stage__column-content').prepend(picture);
+    }
+    decorateIcons(block, true);
+    addClipboardInteraction(block);
   });
-  const picture = block.querySelector('picture');
-  if (picture) {
-    block.querySelector('.general-article-stage__column-content').prepend(picture);
-  }
-
-  decorateIcons(block, true);
-
-  addClipboardInteraction(block);
 }
