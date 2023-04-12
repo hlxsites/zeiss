@@ -30,7 +30,7 @@ function template(info) {
 
 export default async function decorate(block) {
   const locale = getMetadata('locale');
-  const placeholders = await fetchPlaceholders('/' + locale);
+  const placeholders = await fetchPlaceholders(`/${locale}`);
   const pub = document.querySelector('head > meta[name="publicationdate"');
   const time = document.querySelector('head > meta[name="readingtime"');
   let dateString = '';
@@ -39,7 +39,7 @@ export default async function decorate(block) {
   }
   let timeString = '';
   if (time && time.content) {
-    timeString = time.content + ' ' + placeholders.readingtime;
+    timeString = `${time.content} ${placeholders.readingtime}`;
   }
   const picture = block.querySelector('picture');
   block.innerHTML = template(
