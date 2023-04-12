@@ -30,31 +30,33 @@ function template(info) {
 
 export default async function decorate(block) {
   const locale = getMetadata('locale') || 'en';
-  fetchPlaceholders(`/${locale}`).then((placeholders) => {
-    const pub = document.querySelector('head > meta[name="publicationdate"');
-    const time = document.querySelector('head > meta[name="readingtime"');
-    let dateString = '';
-    if (pub && pub.content) {
-      dateString = pub.content;
-    }
-    let timeString = '';
-    if (time && time.content) {
-      timeString = `${time.content} ${placeholders.readingtime}`;
-    }
-    block.innerHTML = template(
-      {
-        Date: dateString,
-        Duration: timeString,
-        Main: block.querySelector('h1')?.textContent || '',
-        Sub: block.querySelector('h3')?.textContent || '',
-        socials,
-      },
-    );
-    const picture = block.querySelector('picture');
-    if (picture) {
-      block.querySelector('.general-article-stage__column-content').prepend(picture);
-    }
-    decorateIcons(block, true);
-    addClipboardInteraction(block);
-  });
+  const placeholders = await fetchPlaceholders(`/${locale}`);
+  const pub = document.querySelector('head > meta[name="publicationdate"');
+  const time = document.querySelector('head > meta[name="readingtime"');
+  let dateString = '';
+  if (pub && pub.content) {
+    dateString = pub.content;
+  }
+  let timeString = '';
+  if (time && time.content) {
+    timeString = `${time.content} ${placeholders.readingtime}`;
+  }
+  const picture = block.querySelector('picture');
+  block.innerHTML = template(
+    {
+      Date: dateString,
+      Duration: timeString,
+      Main: block.querySelector('h1')?.textContent || '',
+      Sub: block.querySelector('h3')?.textContent || '',
+      socials,
+    },
+  );
+
+  if (picture) {
+    block.querySelector('.general-article-stage__column-content').prepend(picture);
+  }
+
+  decorateIcons(block, true);
+
+  addClipboardInteraction(block);
 }
