@@ -29,7 +29,7 @@ function template(info) {
 }
 
 export default async function decorate(block) {
-  const locale = getMetadata('locale') || 'en';
+  const locale = getMetadata('locale') || 'en';
   fetchPlaceholders(`/${locale}`).then((placeholders) => {
     const pub = document.querySelector('head > meta[name="publicationdate"');
     let dateString = '';
