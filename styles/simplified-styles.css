@@ -43,11 +43,12 @@
 
 @media (min-width: 120rem) {
     :root {
-        --section-margin: 2rem;
+        --section-margin: 6rem;
     }
 }
 
-main .section {
+/* TODO: Sections not yet simplified are added as :not exceptions. This list  should shrink as we simplify sections */
+main .section:not(.social-container):not(.carousel-container):not(.text-block):not(.contact-container):not(.columns-container):not(.article-list-container):not(.footer) {
     margin: 0 auto;
     margin-top: var(--spacing-vertical-xxl);
     margin-bottom: var(--spacing-vertical-xxl);
@@ -57,7 +58,8 @@ main .section {
     box-sizing: border-box
 }
 
-.block:not(.header):not(.cards):not(.collapse) {
+/* TODO: Block not yet simplified are added as :not exceptions. This list  should shrink as we simplify sections */
+.block:not(.header):not(.cards):not(.collapse):not(.social):not(.carousel):not(.contact):not(.columns):not(.article-list):not(.footer) {
     position: relative;
     width: 100%;
     display: grid;
@@ -71,12 +73,6 @@ main .section {
 /* text */
 .text {
     color: var(--text-color-text)
-}
-
-.text>* {
-    font-size: inherit;
-    line-height: inherit;
-    letter-spacing: inherit
 }
 
 .text--display-s,
