@@ -59,18 +59,13 @@
   background-image: linear-gradient(to bottom, rgb(255 255 255 / 0%), var(--bg-color-primary) 60%);
 }
 
-a {
-  font-family: var(--font-family-frutiger);
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--button-tertiary-text-default);
-  position: relative;
-  text-decoration: none;
-}
-
 main .block.collapse p.button-container {
    margin-top: var(--spacing-vertical-s);
  }
+
+main .block.collapse a {
+  font-weight: 500;
+}
 
 .expanded-text .collapse > div:nth-child(2)::after {
   opacity: 0;
@@ -81,38 +76,8 @@ main .block.collapse p.button-container {
   margin-top: var(--spacing-vertical-m);
 }
 
-.collapsed-text .collapse > div:nth-child(3), .expanded-text .collapse > div:nth-child(4) {
-  font-family: var(--font-family-frutiger);
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--button-tertiary-text-default);
-  cursor: pointer;
-  display: inline-flex;
-  position: relative;
-  margin-bottom: var(--spacing-vertical-m);
-  vertical-align: baseline;
-}
-
 .expanded-text .collapse > div:nth-child(3), .collapsed-text .collapse > div:nth-child(4) {
   display:none;
-}
-
-.collapse > div:nth-child(3)::after, .collapse > div:nth-child(4)::after, a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: var(--button-tertiary-text-default);
-  transform-origin: bottom left;
-  transition: all ease-in-out .3s;
-  font-weight: 500;
-}
-
-.collapse > div:nth-child(3):hover::after, .collapse > div:nth-child(4):hover::after, a:hover::after {
-  transform: scaleX(1);
 }
 
 main .block.collapse .arrow {
