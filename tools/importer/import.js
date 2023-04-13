@@ -153,7 +153,7 @@ function deriveImageSrc(image) {
   }
   return src;
 }
-function customLogic(main, document) {
+function customLogic(main, document, url) {
   // Change heading to h1
   if (document.querySelector('.headline.hl-xxl .headline__main')) {
     const heading = document.createElement('h1');
@@ -249,17 +249,19 @@ function customLogic(main, document) {
     collapseItem.querySelectorAll(':scope>div>p').forEach((item) => {
       div.append(item);
     });
-    const url = collapseItem.querySelector('.text-block__button a').href;
+    const href = collapseItem.querySelector('.text-block__button a').href;
     div.append(collapseItem.querySelector('.text-block__button a'));
     const expandButton = document.createElement('a');
-    expandButton.href = url;
-    expandButton.textContent = `Mehr Informationen ${title}`;
     const collapseButton = document.createElement('a');
-    collapseButton.href = url;
-    collapseButton.textContent = `Weniger Informationen ${title}`;
-    cells.push([div]);
-    cells.push([expandButton]);
-    cells.push([collapseButton]);
+    expandButton.href = collapseButton.href = href;
+    if (url.includes('zeiss.de')) {
+      expandButton.textContent = `Mehr Informationen ${title}`;
+      collapseButton.textContent = `Weniger Informationen ${title}`;
+    } else {
+      expandButton.textContent = `More ${title}`;
+      collapseButton.textContent = `Less ${title}`;
+    }
+    cells.push([div], [expandButton], [collapseButton]);
     const table = WebImporter.DOMUtils.createTable(cells, document);
     const styleCells = [['Section Metadata']];
     styleCells.push(['Style', 'collapsed-text']);
