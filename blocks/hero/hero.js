@@ -6,9 +6,10 @@ export default async function decorate(block) {
   const placeholders = await fetchPlaceholders(`/${locale}`);
   const pub = document.querySelector('head > meta[name="publicationdate"');
   const time = document.querySelector('head > meta[name="readingtime"');
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
   let dateString = '';
   if (pub && pub.content) {
-    dateString = pub.content;
+    dateString = new Date(pub.content).toLocaleDateString(getMetadata('locale'), options);
   }
   let timeString = '';
   if (time && time.content) {
