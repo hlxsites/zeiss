@@ -235,7 +235,10 @@ function customLogic(main, document) {
 
   // Add collapse block
   document.querySelectorAll('.text-block__expandable-area').forEach((collapseItem) => {
-    const uncapitalize = (s) => { const trimmed = s.trim(); return trimmed.charAt(0).toLowerCase() + trimmed.slice(1) } ;
+    const uncapitalize = (s) => {
+      const trimmed = s.trim();
+      return trimmed.charAt(0).toLowerCase() + trimmed.slice(1);
+    };
     const cells = [['collapse']];
     const div = document.createElement('div');
     const heading = collapseItem.closest('.text-block').querySelector('.text-block__headline h2');
