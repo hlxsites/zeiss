@@ -249,11 +249,12 @@ function customLogic(main, document, url) {
     collapseItem.querySelectorAll(':scope>div>p').forEach((item) => {
       div.append(item);
     });
-    const href = collapseItem.querySelector('.text-block__button a').href;
+    const { href } = collapseItem.querySelector('.text-block__button a');
     div.append(collapseItem.querySelector('.text-block__button a'));
     const expandButton = document.createElement('a');
     const collapseButton = document.createElement('a');
-    expandButton.href = collapseButton.href = href;
+    expandButton.href = href;
+    collapseButton.href = href;
     if (url.includes('zeiss.de')) {
       expandButton.textContent = `Mehr Informationen ${title}`;
       collapseButton.textContent = `Weniger Informationen ${title}`;
