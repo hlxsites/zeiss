@@ -235,18 +235,33 @@ function customLogic(main, document) {
 
   // Add collapse block
   document.querySelectorAll('.text-block__expandable-area').forEach((collapseItem) => {
+    const uncapitalize = (s) => { const trimmed = s.trim(); return trimmed.charAt(0).toLowerCase() + trimmed.slice(1) } ;
     const cells = [['collapse']];
     const div = document.createElement('div');
     const heading = collapseItem.closest('.text-block').querySelector('.text-block__headline h2');
     collapseItem.closest('.text-block').querySelector('[data-js-select="TextBlock_buttonToggle"]').remove();
-    div.append(heading);
+    cells.push([`${heading.textContent}`]);
+    const title = uncapitalize(heading.textContent);
+    heading.remove();
     collapseItem.querySelectorAll(':scope>div>p').forEach((item) => {
       div.append(item);
     });
+    const url = collapseItem.querySelector('.text-block__button a').href;
     div.append(collapseItem.querySelector('.text-block__button a'));
+    const expandButton = document.createElement('a');
+    expandButton.href = url;
+    expandButton.textContent = `Mehr Informationen ${title}`;
+    const collapseButton = document.createElement('a');
+    collapseButton.href = url;
+    collapseButton.textContent = `Weniger Informationen ${title}`;
     cells.push([div]);
+    cells.push([expandButton]);
+    cells.push([collapseButton]);
     const table = WebImporter.DOMUtils.createTable(cells, document);
-    collapseItem.replaceWith(table);
+    const styleCells = [['Section Metadata']];
+    styleCells.push(['Style', 'collapsed-text']);
+    const stylesTable = WebImporter.DOMUtils.createTable(styleCells, document);
+    collapseItem.replaceWith(table, stylesTable);
   });
 
   // Add downloads block
