@@ -1,12 +1,41 @@
 /* stylelint-disable selector-class-pattern */
 
 :root {
+    --font-family-frutiger: "Frutiger Next", "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
+    --interaction-color-link: #0072ef;
+    --button-tertiary-text-default: var(--interaction-color-link);
     --text-color-body: #606a76;
     --text-color-text: var(--text-color-body);
     --spacing-vertical-m: 1.5rem;
     --spacing-vertical-xxl: 3.5rem;
     --spacing-vertical-s: 1rem;
     --section-margin: 1.5rem;
+}
+
+a {
+    font-family: var(--font-family-frutiger);
+    font-size: 1rem;
+    color: var(--button-tertiary-text-default);
+    position: relative;
+    text-decoration: none;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--button-tertiary-text-default);
+    transform-origin: bottom left;
+    transition: all ease-in-out .3s;
+    font-weight: 500;
+}
+
+a:hover::after {
+    transform: scaleX(1);
 }
 
 

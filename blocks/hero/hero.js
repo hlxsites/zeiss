@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { decorateIcons, getMetadata } from '../../scripts/lib-franklin.js';
+=======
+import { decorateIcons } from '../../scripts/lib-franklin.js';
+>>>>>>> origin/main
 import { addClipboardInteraction } from '../../scripts/utils.js';
 
 export default async function decorate(block) {
