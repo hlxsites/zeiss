@@ -1,4 +1,4 @@
-import { decorateIcons, getMetadata, fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { decorateIcons, fetchPlaceholders } from '../../scripts/lib-franklin.js';
 import { addClipboardInteraction, getLocale } from '../../scripts/utils.js';
 
 function addBackLink(block) {
