@@ -1,5 +1,5 @@
 import { decorateIcons, getMetadata, fetchPlaceholders } from '../../scripts/lib-franklin.js';
-import { addClipboardInteraction } from '../../scripts/utils.js';
+import { addClipboardInteraction, getLocale } from '../../scripts/utils.js';
 
 function addBackLink(block) {
   if (window.location.pathname.endsWith('/news-und-events/')) {
@@ -31,15 +31,14 @@ function addBackLink(block) {
 
 export default async function decorate(block) {
   addBackLink(block);
-
-  const locale = getMetadata('locale') || 'en';
+  const locale = getLocale();
   const placeholders = await fetchPlaceholders(`/${locale}`);
   const pub = document.querySelector('head > meta[name="publicationdate"');
   const time = document.querySelector('head > meta[name="readingtime"');
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   let dateString = '';
   if (pub && pub.content) {
-    dateString = new Date(pub.content).toLocaleDateString(getMetadata('locale'), options);
+    dateString = new Date(pub.content).toLocaleDateString(locale, options);
   }
   let timeString = '';
   if (time && time.content) {
