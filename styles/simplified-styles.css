@@ -84,7 +84,7 @@ a:hover {
 }
 
 /* TODO: Sections not yet simplified are added as :not exceptions. This list  should shrink as we simplify sections */
-main:not(.carousel-container):not(.text-block):not(.contact-container):not(.columns-container):not(.article-list-container):not(.footer) {
+main .section:not(.carousel-container):not(.text-block):not(.contact-container):not(.columns-container):not(.article-list-container):not(.footer) {
     margin: 0 auto;
     margin-top: var(--spacing-vertical-xxl);
     margin-bottom: var(--spacing-vertical-xxl);
