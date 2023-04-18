@@ -24,7 +24,7 @@ a {
     text-decoration: none;
 }
 
- not(.header) a::after, a::after {
+a:not(.header__first-level-link)::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -38,7 +38,7 @@ a {
     font-weight: 500;
 }
 
-not(.header) a:hover::after, a:hover::after {
+a:not(.header__first-level-link):hover::after {
     transform: scaleX(1);
 }
 
