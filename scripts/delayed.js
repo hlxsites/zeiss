@@ -106,7 +106,7 @@ function configureGoogleTagManager(url, envType) {
 function loadGoogleTagManager(href) {
   const url = new URL(href);
   const envType = getEnvType(url.hostname);
-  configureGoogleTagManager(url, envType);
+  //configureGoogleTagManager(url, envType);
   fireGoogleTagManager(window, document, 'script', 'dataLayer', getContainerId(envType));
 }
 
