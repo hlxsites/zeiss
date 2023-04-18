@@ -115,5 +115,5 @@ function loadGoogleTagManager(href) {
 function OptanonWrapper() { }
 
 loadGoogleTagManager(window.location.href);
-loadCookieConsent(document, window.location.hostname);
+//loadCookieConsent(document, window.location.hostname);
 
