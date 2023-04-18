@@ -68,11 +68,20 @@ function getContainerId(envType) {
   return (envType === 'live') ? 'GTM-WWQQS7V' : 'GTM-T6MZWTJ';
 }
 
-function loadGoogleTagManager(href) {
+function fireGoogleTagManager(w, d, s, l, i) {
+  w[l] = w[l] || [];
+  w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+  const f = d.getElementsByTagName(s)[0];
+  const j = d.createElement(s);
+  const dl = l !== 'dataLayer' ? `&l=${l}` : '';
+  j.async = true;
+  j.src = `https://www.googletagmanager.com/gtm.js?id=${i}${dl}`;
+  f.parentNode.insertBefore(j, f);
+}
+
+function configureGoogleTagManager(url, envType) {
   // Initialize the data layer
   /* eslint no-undef: "error" */
-  const url = new URL(href);
-  const envType = getEnvType(url.hostname);
   const locale = getLocale();
   const pageCountry = {
     en: 'INT',
@@ -92,10 +101,13 @@ function loadGoogleTagManager(href) {
     productName: '',
   };
   window.dataLayer = [conf];
+}
 
-  // Include the manager
-  // eslint-disable-next-line
-  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',getContainerId(envType));
+function loadGoogleTagManager(href) {
+  const url = new URL(href);
+  const envType = getEnvType(url.hostname);
+  configureGoogleTagManager(url, envType);
+  fireGoogleTagManager(window, document, 'script', 'dataLayer', getContainerId(envType));
 }
 
 // The OneTrust website says to define this function like this.
