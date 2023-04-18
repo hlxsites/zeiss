@@ -24,7 +24,7 @@ a {
     text-decoration: none;
 }
 
-a::after {
+ not(.header) a::after, a::after {
     content: '';
     position: absolute;
     width: 100%;
@@ -38,7 +38,7 @@ a::after {
     font-weight: 500;
 }
 
-a:hover::after {
+not(.header) a:hover::after, a:hover::after {
     transform: scaleX(1);
 }
 
