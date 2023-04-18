@@ -114,6 +114,6 @@ function loadGoogleTagManager(href) {
 // eslint-disable-next-line no-unused-vars
 function OptanonWrapper() { }
 
-loadGoogleTagManager(window.location.href);
+//loadGoogleTagManager(window.location.href);
 //loadCookieConsent(document, window.location.hostname);
 
