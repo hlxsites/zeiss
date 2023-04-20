@@ -52,6 +52,43 @@ function addFooterInteractions(block) {
   });
 }
 
+function breadcrumbTemplate(locale) {
+  const localized = {
+    en: {
+      href: 'https://www.zeiss.com/semiconductor-manufacturing-technology/news-and-events.html',
+      text: 'News and Events',
+    },
+    de: {
+      href: 'https://www.zeiss.de/semiconductor-manufacturing-technology/news-und-events.html',
+      text: 'News Und Events',
+    },
+  }[locale];
+  return `
+    <ul class="breadcrumb__list-wrapper breadcrumb__list-wrapper--less-than-two">
+      <li class="breadcrumb__list-item">  
+        <span class="icon icon-symbols-chevron-right icon--symbol">
+          <span class="svg-scale-wrapper" style="padding-bottom: 100%;">
+            <svg focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <use xlink:href="/icons/symbols-sprite.svg#svgsymbol-chevron-right"></use>
+            </svg>
+          </span>
+        </span>
+        <a class="plain-link breadcrumb__link-item" data-gtm-eventname="Navigation" data-gtm-eventaction="Click" data-gtm-eventtype="Footer" data-gtm-eventvalue="Home" data-gtm-eventdetail="https://www.zeiss.com/semiconductor-manufacturing-technology/home.html" href="https://www.zeiss.com/semiconductor-manufacturing-technology/home.html">Home</a>
+      </li>
+      <li class="breadcrumb__list-item">   
+        <span class="icon icon-symbols-chevron-right icon--symbol">
+          <span class="svg-scale-wrapper" style="padding-bottom: 100%;">
+            <svg focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <use xlink:href="/icons/symbols-sprite.svg#svgsymbol-chevron-right"></use>
+            </svg>
+          </span>
+        </span>
+        <a class="plain-link breadcrumb__link-item" data-gtm-eventname="Navigation" data-gtm-eventaction="Click" data-gtm-eventtype="Footer" data-gtm-eventvalue="${localized.text}" data-gtm-eventdetail="${localized.href}" href="${localized.href}">${localized.text}</a>
+      </li>
+    </ul>
+  `;
+}
+
 /**
  * loads and decorates the footer
  * @param {Element} block The header block element
@@ -68,6 +105,10 @@ export default async function decorate(block) {
     const html = await resp.text();
     const parser = new DOMParser();
     const footer = parser.parseFromString(html, 'text/html').querySelector('footer');
+    // add breadcrump
+    const breadcrumb = footer.querySelector('nav[class=breadcrumb]');
+    breadcrumb.innerHTML = breadcrumbTemplate(locale);
+    // fix svg relative urls
     decorateIcons(footer, true);
     block.append(footer);
     addFooterInteractions(block);
