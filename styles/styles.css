@@ -2106,3 +2106,5 @@
   .general-article-stage__details {
       margin-top: var(--spacing-vertical-s)
   }
+
+  //* { border: 1px solid black !important; }
