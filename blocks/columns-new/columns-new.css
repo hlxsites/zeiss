@@ -28,7 +28,6 @@
     }
 
     .columns-new-2-cols >div >div:first-child {
-        font-size: var(--font-size-body-750);
         margin-bottom: unset;
     }
 
