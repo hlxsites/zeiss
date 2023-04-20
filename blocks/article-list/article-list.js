@@ -26,7 +26,7 @@ function articleTemplate(noCurry) {
                                         </div>
                                         <div class="article-teaser-item__eyebrow text--eyebrow">
                                             <span
-                                                class="article-teaser-item__eyebrow--sub article-teaser-item__eyebrow--sub-without-main ">${article.pubdate}</span>
+                                                class="article-teaser-item__eyebrow--sub article-teaser-item__eyebrow--sub-without-main ">${article.publicationdate}</span>
                                         </div>
                                         <div class="headline hl-s     ">
                                             <span>
