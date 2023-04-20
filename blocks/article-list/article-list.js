@@ -2,8 +2,8 @@ import { decorateIcons, readBlockConfig, fetchPlaceholders } from '../../scripts
 import { getLocale } from '../../scripts/utils.js';
 
 function articleTemplate(noCurry) {
-    const article = noCurry[0];
-    const placeholders = noCurry[1];
+  const article = noCurry[0];
+  const placeholders = noCurry[1];
   return `
                         <div
                             class="grid__column featured-articles-with-teaser__item featured-articles-with-teaser__item--article">
@@ -47,7 +47,7 @@ function articleTemplate(noCurry) {
                         </div>`;
 }
 
-function template(articles, title = 'Weitere Artikel', placeholders) {
+function template(articles, placeholders, title = 'Weitere Artikel') {
   return `<div class="featured-articles-with-teaser featured-articles-with-teaser--background-grey">
     <div class="grid__container">
         <div class="grid__structure">
@@ -71,7 +71,7 @@ function template(articles, title = 'Weitere Artikel', placeholders) {
                     
                     <div
                         class="grid__structure featured-articles-with-teaser__items featured-articles-with-teaser__items--${articles.length}">
-                        ${articles.map((article => [article, placeholders])).map(articleTemplate).join('')}
+                        ${articles.map((article) => [article, placeholders]).map(articleTemplate).join('')}
                         
 
                         <div
@@ -135,6 +135,6 @@ export default async function decorate(block) {
     .sort((entry1, entry2) => entry2[0] - entry1[0])
     .map((entry) => entry[1])
     .slice(0, limit);
-  block.innerHTML = template(articles, config.title, placeholders);
+  block.innerHTML = template(articles, placeholders, config.title);
   decorateIcons(block, true);
 }
