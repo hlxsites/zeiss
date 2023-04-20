@@ -1,5 +1,5 @@
 import { decorateIcons, readBlockConfig, fetchPlaceholders } from '../../scripts/lib-franklin.js';
-import { getLocale } from '../../scripts/utils.js';
+import { getLocale, getFormattedDate } from '../../scripts/utils.js';
 
 function articleTemplate(noCurry) {
   const article = noCurry[0];
@@ -26,7 +26,7 @@ function articleTemplate(noCurry) {
                                         </div>
                                         <div class="article-teaser-item__eyebrow text--eyebrow">
                                             <span
-                                                class="article-teaser-item__eyebrow--sub article-teaser-item__eyebrow--sub-without-main ">${article.publicationdate}</span>
+                                                class="article-teaser-item__eyebrow--sub article-teaser-item__eyebrow--sub-without-main ">${getFormattedDate(new Date(article.publicationdate), getLocale())}</span>
                                         </div>
                                         <div class="headline hl-s     ">
                                             <span>
