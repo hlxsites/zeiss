@@ -10,7 +10,7 @@ function addFooterInteractions(block) {
   block.querySelectorAll('.footer-tabs__tab').forEach((tab) => {
     tab.onclick = () => {
       const content = tab.nextElementSibling.querySelector('.footer-tabs__tab-content');
-      const icon = tab.querySelector('.icon-expand-more');
+      const icon = tab.querySelector('.icon-symbols-expand-more');
 
       const isActiveTabClass = 'footer-tabs__tab--active';
       const isTabContentVisibleClass = 'footer-tabs__tab-content--visible';
@@ -20,7 +20,7 @@ function addFooterInteractions(block) {
       if (!isActive && activeEl) {
         activeEl.classList.remove(isActiveTabClass);
         block.querySelector(`.${isTabContentVisibleClass}`).classList.remove(isTabContentVisibleClass);
-        block.querySelector('.icon-expand-more.is-active').classList.remove('is-active');
+        block.querySelector('.icon-symbols-expand-more.is-active').classList.remove('is-active');
       }
 
       tab.classList.toggle(isActiveTabClass, !isActive);
