@@ -12,11 +12,24 @@
 /* global WebImporter */
 /* eslint-disable no-console, class-methods-use-this */
 
-const authorMap = {
+const authorMapDe = {
   'Frederic Franz': 'https://main--zeiss--hlxsites.hlx.live/de/authors/frederic-franz',
   'Dr. Manuel Thomä': 'https://main--zeiss--hlxsites.hlx.live/de/authors/manuel-thomae',
   'Janis Eitner': 'https://main--zeiss--hlxsites.hlx.live/de/authors/janis-eitner',
   'Jeannine Rapp': 'https://main--zeiss--hlxsites.hlx.page/de/authors/jeannine-rapp',
+  'Jörg Nitschke': 'https://main--zeiss--hlxsites.hlx.page/de/authors/joerg-nitschke',
+  'Victoria Doll': 'https://main--zeiss--hlxsites.hlx.page/de/authors/victoria-doll',
+  'Nadine Schütze': 'https://main--zeiss--hlxsites.hlx.page/de/authors/nadine-schuetze',
+};
+
+const authorMapEn = {
+  'Frederic Franz': 'https://main--zeiss--hlxsites.hlx.live/en/authors/frederic-franz',
+  'Dr. Manuel Thomä': 'https://main--zeiss--hlxsites.hlx.live/en/authors/manuel-thomae',
+  'Janis Eitner': 'https://main--zeiss--hlxsites.hlx.live/en/authors/janis-eitner',
+  'Jeannine Rapp': 'https://main--zeiss--hlxsites.hlx.page/en/authors/jeannine-rapp',
+  'Jörg Nitschke': 'https://main--zeiss--hlxsites.hlx.page/en/authors/joerg-nitschke',
+  'Victoria Doll': 'https://main--zeiss--hlxsites.hlx.page/en/authors/victoria-doll',
+  'Nadine Schütze': 'https://main--zeiss--hlxsites.hlx.page/en/authors/nadine-schuetze',
 };
 
 const tagsMap = {
@@ -102,6 +115,13 @@ const tagsMap = {
     '/semiconductor-manufacturing-technology/news-and-events/smt-press-releases/quality-supplier-award.html',
     '/semiconductor-manufacturing-technology/news-and-events/smt-press-releases/european-inventor-award.html',
     '/semiconductor-manufacturing-technology/news-and-events/smt-press-releases/2023/zeiss-expands-at-the-rossdorf-research-and-development-site.html'],
+};
+
+const getLocale = (url) => {
+  if (url.includes('zeiss.de')) {
+    return 'de';
+  }
+  return 'en';
 };
 
 const createMetadata = (main, document, url) => {
@@ -229,6 +249,7 @@ function customLogic(main, document, url) {
     const cells = [['contact(small)']];
     const div = document.createElement('div');
     const names = [];
+    const authorMap = getLocale(url) === 'de' ? authorMapDe : authorMapEn;
     document.querySelectorAll('.profileCollection.module .profile-collection__item').forEach((item) => {
       const p = document.createElement('p');
       const name = item.querySelector('h2 > span').textContent;
@@ -278,7 +299,7 @@ function customLogic(main, document, url) {
     expandButton.href = '#';
     collapseButton.href = '#';
 
-    if (url.includes('zeiss.de')) {
+    if (getLocale(url) === 'de') {
       expandButton.textContent = `Mehr Informationen ${title}`;
       collapseButton.textContent = `Weniger Informationen ${title}`;
     } else {
@@ -356,6 +377,75 @@ function customLogic(main, document, url) {
     const table = WebImporter.DOMUtils.createTable(cells, document);
     document.querySelector('.image-slideshow').after(document.createElement('hr'));
     document.querySelector('.image-slideshow').replaceWith(table);
+  }
+
+  // Image and text block handling
+  const imageTextBlock = document.querySelector('.image-and-text-block');
+
+  if (imageTextBlock) {
+    const cells = [['Columns New']];
+    const imageBlock = imageTextBlock.querySelectorAll('.image-and-text-block__visual');
+    const textBlock = imageTextBlock.querySelectorAll('.image-and-text-block__content');
+    const arr = [];
+
+    if (imageBlock) {
+      imageBlock.forEach((item) => {
+        const imgDiv = document.createElement('div');
+        const img = document.createElement('img');
+        img.src = deriveImageSrc(item.querySelector('figure img'));
+        imgDiv.appendChild(img);
+
+        const copyrightBlock = item.querySelector('.lazy-image__copyright-text');
+        if (copyrightBlock) {
+          const copyrightTxt = `©${copyrightBlock.textContent}`;
+          const copyright = document.createElement('p');
+          copyright.textContent = copyrightTxt;
+          imgDiv.appendChild(copyright);
+        }
+
+        const caption = item.querySelector('figure figcaption .lazy-image__caption p');
+        if (caption) {
+          imgDiv.appendChild(caption);
+        }
+        arr.push(imgDiv);
+      });
+    }
+
+    if (textBlock) {
+      textBlock.forEach((item) => {
+        const contentDiv = document.createElement('div');
+        const headline = item.querySelector('.headline');
+        const text = item.querySelector('.text');
+
+        if (headline) {
+          const h1 = document.createElement('h1');
+          h1.textContent = headline.textContent;
+          contentDiv.appendChild(h1);
+        }
+
+        if (text) {
+          const pTags = text.querySelectorAll('p');
+
+          if (pTags) {
+            pTags.forEach((pTag) => {
+              const p = document.createElement('p');
+              p.textContent = pTag.textContent;
+              contentDiv.appendChild(p);
+            });
+          }
+        }
+
+        arr.push(contentDiv);
+      });
+    }
+
+    if (arr.length) {
+      cells.push(arr);
+    }
+
+    const table = WebImporter.DOMUtils.createTable(cells, document);
+    document.querySelector('.image-and-text-block').after(document.createElement('hr'));
+    document.querySelector('.image-and-text-block').replaceWith(table);
   }
 }
 
