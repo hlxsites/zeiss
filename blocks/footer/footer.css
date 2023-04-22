@@ -1142,6 +1142,12 @@
   }
 }
 
+@media (min-width: 80rem) {
+  .footer-legal-links ul {
+    margin: unset;
+  }
+}
+
 @media (min-width: 90rem) {
   .footer-tabs__website-area__list li {
     margin-bottom: var(--spacing-vertical-m)
