@@ -104,6 +104,12 @@ main .section:not(.carousel-container):not(.text-block):not(.contact-container):
     box-sizing: border-box
 }
 
+@media (min-width: 102rem) {
+    main .section.collapse-container {
+        max-width: 71.5rem !important;
+    }
+}
+
 /* TODO: Block not yet simplified are added as :not exceptions. This list  should shrink as we simplify sections */
 .block:not(.header):not(.cards):not(.collapse):not(.carousel):not(.contact):not(.columns):not(.article-list):not(.footer):not(.columns-new) {
     position: relative;
