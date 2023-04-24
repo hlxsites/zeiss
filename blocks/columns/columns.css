@@ -5,10 +5,32 @@
 
 .columns img {
   width: 100%;
+  margin-bottom: var(--spacing-vertical-xs);
 }
 
 .columns > div > div {
   order: 1;
+}
+
+.columns > div:not:first-child {
+  margin-top: var(--spacing-vertical-m);
+  margin-left: var(--grid-margin);
+  margin-right: var(--grid-margin);
+}
+
+.columns > div > div > p:first-of-type {
+  font-size: var(--font-size-body-750);
+  margin-bottom: var(--spacing-vertical-m);
+}
+
+.columns > div > div:last-child, .columns > div > div > h4 {
+  letter-spacing: 0.005em;
+  line-height: var(--line-height-body-1000);
+  margin-top: 0.938rem;
+}
+
+.columns > div > div:last-child >p:last-child {
+  padding-top: 1.5rem;
 }
 
 .columns > div > .columns-img-col {
@@ -19,15 +41,22 @@
   display: block;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 48rem) {
   .columns > div {
-    align-items: center;
     flex-direction: unset;
-    gap: 32px;
+    gap: 1.5rem;
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  .columns > div > div:first-child {
+    margin-bottom: unset;
+  }
+
+  .columns > div > div:last-child {
+    margin-top: var(--spacing-vertical-s);
   }
 }

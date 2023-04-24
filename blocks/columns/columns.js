@@ -124,7 +124,6 @@ function formatBytes(bytes, decimals = 1) {
 }
 
 export default function decorate(block) {
-    const heading = block.querySelector('h2');
 
     const items = [];
     Array.from(block.children).forEach((child, idx) => {
