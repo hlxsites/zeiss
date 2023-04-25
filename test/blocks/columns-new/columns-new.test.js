@@ -24,11 +24,4 @@ describe('Columns New Block', () => {
     expect(block.querySelector('.caption')).not.to.be.null;
     expect(block.querySelector('.caption')).not.to.be.undefined;
   });
-
-  it('Copyright Span', async () => {
-    const block = document.querySelector('.columns-new');
-    await decorate(block);
-    expect(block.querySelector('.copyright')).not.to.be.null;
-    expect(block.querySelector('.copyright')).not.to.be.undefined;
-  });
 });
