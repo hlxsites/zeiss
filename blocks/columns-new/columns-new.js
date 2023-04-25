@@ -6,7 +6,8 @@ export default function decorate(block) {
   if (item) {
     const pTags = item.querySelectorAll('p');
 
-    if (pTags) {
+    if (pTags && pTags[0] && pTags[0].querySelector('img')) {
+      // Marking caption and copyright only in case if first p has img
       for (let i = 1; i < pTags.length; i += 1) {
         const currentP = pTags[i];
         const currentPText = currentP.textContent;
