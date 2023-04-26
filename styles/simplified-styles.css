@@ -46,6 +46,11 @@ a:hover {
     color: var(--button-primary-border-hover);
 }
 
+.text-block {
+    margin-top: calc(var(--spacing-vertical-l) + var(--spacing-vertical-xl));
+    margin-bottom: calc(var(--spacing-vertical-xl) * 2);
+  }
+
 .text-block li {
     list-style-type: disc;
     margin-left: 2.5rem;
