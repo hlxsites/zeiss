@@ -241,7 +241,13 @@
   }
 
   main {
-    padding-top: var(--header__height)
+    padding-top: 6rem;
+  }
+
+  @media (min-width: 48rem) {
+    main {
+      padding-top: 8rem;
+    }
   }
 
   main img {
