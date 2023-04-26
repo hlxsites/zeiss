@@ -49,8 +49,7 @@ a:hover {
 a.button.secondary {
     display: inline-block;
     position: relative;
-    color: var(--text-color-body);
-    font-weight: normal;
+    color: inherit;
     text-decoration: none;
     transition: color .75s;
     outline: none;
