@@ -240,6 +240,10 @@
     display: unset;
   }
 
+  main {
+    padding-top: var(--header__height)
+  }
+
   main img {
     max-width: 100%;
     width: auto;
@@ -291,21 +295,16 @@
 
   /* header */
   header {
-    position: sticky;
+    position: fixed;
     width: 100vw;
     top: 0;
     left: 0;
     z-index: 5000;
     background-color: var(--color-white);
     transition: ease-out .5s;
-    height: 96px;
   }
 
   @media (min-width: 768px) {
-    header {
-      height: 136px;
-    }
-
     header.header--scrolled {
       height: 96px;
     }
