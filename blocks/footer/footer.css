@@ -692,6 +692,27 @@
   }
 }
 
+.country-switch-list__link {
+  color: var(--text-color-headlines);
+  background-image: linear-gradient(to bottom, transparent 20%, currentColor 21%);
+  background-position: 0 1.25rem;
+  background-repeat: no-repeat;
+  background-size: 0 0.125rem;
+  transition: background-size .3s ease-out;
+}
+
+.country-switch-list__link:hover, .country-switch-list__link:focus {
+  color: var(--color-black);
+  background-size: 100% 0.125rem;
+  transition-delay: 0s;
+}
+
+.country-switch-list__li--active .country-switch-list__link {
+  color: var(--color-black);
+  background-size: 100% 0.125rem;
+  transition-delay: 0s;
+}
+
 .footer__main-footer .footer__background-column {
   background-color: var(--bg-color-secondary)
 }
@@ -711,6 +732,7 @@
 
   .country-switch-list p {
     margin-bottom: var(--spacing-vertical-xs);
+    font-weight: 700;
   }
 
   .footer-country-switch .accordion__item {
@@ -753,10 +775,6 @@
   .footer-country-switch .accordion__item:nth-child(2) {
     grid-column: 5/calc(var(--grid-columns) + 1);
   }
-}
-
-.country-switch-list__link {
-  color: var(--text-color-headlines);
 }
 
 @media (min-width: 48rem) {
