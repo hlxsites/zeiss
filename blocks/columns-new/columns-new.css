@@ -5,7 +5,6 @@
 
 .columns-new img {
     width: 100%;
-    margin-bottom: var(--spacing-vertical-xs);
 }
 
 .columns-new h1 {
@@ -16,32 +15,24 @@
     margin-bottom: var(--spacing-vertical-s);
 }
 
-.columns-new a {
-    display: inline-block;
-    position: relative;
-    color: inherit;
-    text-decoration: none;
-    transition: color .75s;
-    outline: none;
-}
-
-.columns-new a:hover {
-    color: var(--text-color-link-hover);
-}
-
-.columns-new a::after {
-    content: "";
+.columns-new .copyright {
+    background-color: rgba(255, 255, 255, .6);
+    padding-top: var(--spacing-vertical-xxs);
+    padding-right: var(--spacing-horizontal-xs);
+    padding-bottom: 0.6rem;
+    padding-left: var(--spacing-horizontal-xs);
     position: absolute;
-    left: 0;
     right: 0;
-    bottom: 0;
-    border-top: 1px solid var(--button-tertiary-underline-default);
-    animation-duration: .75s;
+    bottom: 100%;
 }
 
-.columns-new a:hover::after {
-    background-color: var(--button-tertiary-underline-hover);
-    animation-name: hover;
+.columns-new .caption {
+    padding-top: var(--spacing-vertical-xs);
+}
+
+.columns-new .copyright-text::before {
+    content: "©";
+    padding-right: var(--spacing-horizontal-xxs)
 }
 
 .columns-new > div > div {
@@ -51,6 +42,12 @@
 .columns-new > div > div:first-child {
     font-size: var(--font-size-body-750);
     margin-bottom: var(--spacing-vertical-m);
+    line-height: var(--line-height-caption-750);
+}
+
+.columns-new > div > div:first-child p {
+    position: relative;
+    display: flex;
 }
 
 .columns-new > div > div:last-child {

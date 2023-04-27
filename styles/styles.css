@@ -240,10 +240,21 @@
     display: unset;
   }
 
+  main {
+    padding-top: 6rem;
+  }
+
+  @media (min-width: 48rem) {
+    main {
+      padding-top: 8rem;
+    }
+  }
+
   main img {
     max-width: 100%;
     width: auto;
     height: auto;
+    min-width: 100%;
   }
 
   /* progressive section appearance */
@@ -291,21 +302,16 @@
 
   /* header */
   header {
-    position: sticky;
+    position: fixed;
     width: 100vw;
     top: 0;
     left: 0;
     z-index: 5000;
     background-color: var(--color-white);
     transition: ease-out .5s;
-    height: 96px;
   }
 
   @media (min-width: 768px) {
-    header {
-      height: 136px;
-    }
-
     header.header--scrolled {
       height: 96px;
     }
@@ -882,12 +888,6 @@
   .text--body-s {
     font-size: 0.875rem;
     line-height: 1.25rem;
-    letter-spacing: 0.5px
-  }
-
-  .text--body-m {
-    font-size: 1rem;
-    line-height: 1.5rem;
     letter-spacing: 0.5px
   }
 

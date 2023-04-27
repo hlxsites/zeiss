@@ -1,23 +1,10 @@
-import { decorateIcons } from '../../scripts/lib-franklin.js';
+import { decorateIcons, fetchPlaceholders } from '../../scripts/lib-franklin.js';
 import { getLocale } from '../../scripts/utils.js';
 
-function template(props) {
-    const locale = getLocale();
-    const localised = {
-        en: {
-            fileSize: 'File size',
-            pages: 'Pages',
-        },
-        de: {
-            fileSize: 'Dateigröße',
-            pages: 'Seiten',
-        },
-    }[locale];
-
+function template(props, placeholders) {
     return `
     <div class="downloads-wrapper">
       <div class="downloads">
-
         <div class="grid__container downloads__headline-grid">
           <div class="grid__structure">
               <div class="grid__column grid__column--100">
@@ -33,7 +20,6 @@ function template(props) {
               </div>
             </div>
           </div>
-
           <div class="downloads__tabs downloads__tabs--no-tabs">
             <div class="tabs-horizontal tabs-horizontal--js-init">
               <div>
@@ -44,10 +30,8 @@ function template(props) {
                         <div class="slideshow slideshow--assets assets__slideshow slideshow--navigation-recenter slideshow--hide-interaction">
                           <div class="slideshow__container swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
                             <ul class="slideshow__list swiper-wrapper">
-
                               ${props.items.map((item) => `
                               <li class="slideshow__item">
-
                                 <div class="download-item download-item--landscape">
                                   <div class="download-item__image">
                                     <a class="plain-link download-item__image-link" href="${item.href}">
@@ -59,7 +43,6 @@ function template(props) {
                                       </figure>
                                     </a>
                                   </div>
-
                                   <div class="download-item__content">
                                     <div class="download-item__headline">
                                       <div class="headline hl-xs   spacing--s  ">
@@ -71,18 +54,16 @@ function template(props) {
                                         </span>
                                       </div>
                                     </div>
-
                                     <div class="download-item__info text--body-m">
                                       <div class="download-item__info-data">
-                                        <span class="download-item__info-label text--bold">${localised.pages}:</span>
+                                        <span class="download-item__info-label text--bold">${placeholders.columnpages}:</span>
                                         <span class="download-item__info-value">1</span>
                                       </div>
                                       <div class="download-item__info-data">
-                                        <span class="download-item__info-label text--bold">${localised.fileSize}:</span>
+                                        <span class="download-item__info-label text--bold">${placeholders.columnfilesize}:</span>
                                         <span class="download-item__info-value download-size-slot"></span>
                                       </div>
                                     </div>
-
                                     <div class="button-link button-link--link">
                                       <a class=" button-link--icon  button-link--internal" href="${item.href}" download="${item.name}">
                                         <span class="button-link__content">
@@ -95,10 +76,8 @@ function template(props) {
                                     </div>
                                   </div>
                                 </div>
-
                               </li>
                               `).join('')}
-
                             </ul>
                           </div>
                         </div>
@@ -123,7 +102,8 @@ function formatBytes(bytes, decimals = 1) {
     return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
 }
 
-export default function decorate(block) {
+export default async function decorate(block) {
+    const heading = block.querySelector('h2');
 
     const items = [];
     Array.from(block.children).forEach((child, idx) => {
@@ -150,7 +130,9 @@ export default function decorate(block) {
         }
     });
 
-    block.innerHTML = template({ items });
+    const locale = getLocale();
+    const placeholders = await fetchPlaceholders(`/${locale}`);
+    block.innerHTML = template({ items }, placeholders);
 
     decorateIcons(block, true);
 
