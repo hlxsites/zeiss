@@ -105,7 +105,7 @@ a:hover {
 }
 
 /* TODO: Sections not yet simplified are added as :not exceptions. This list  should shrink as we simplify sections */
-main .section:not(.carousel-container):not(.text-block):not(.contact-container):not(.columns-container):not(.article-list-container):not(.footer):not(.columns-new-container):not(.collapse-container):not(.hero-container) {
+main .section:not(.carousel-container):not(.text-block):not(.contact-container):not(.columns-container):not(.article-list-container):not(.footer):not(.columns-new-container):not(.collapse-container):not(.hero-container):not(.social-container) {
     margin: 0 auto;
     margin-top: var(--spacing-vertical-xxl);
     margin-bottom: var(--spacing-vertical-xxl);
@@ -619,13 +619,13 @@ main .section:not(.carousel-container):not(.text-block):not(.contact-container):
 .page-utility-bar .divider {
     grid-column: 1/-1;
     grid-row: 1;
-    margin-bottom: var(--spacing-vertical-m);
+    margin-bottom: var(--spacing-vertical-l);
     margin-top: 0;
 }
 
 .page-utility-bar .divider:last-child {
     grid-row: 4;
-    margin-top: var(--spacing-vertical-m);
+    margin-top: var(--spacing-vertical-l);
     margin-bottom: 0
 }
 
