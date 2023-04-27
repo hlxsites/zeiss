@@ -46,7 +46,7 @@ a:hover {
     color: var(--button-primary-border-hover);
 }
 
-a.button.secondary {
+em > a {
     display: inline-block;
     position: relative;
     color: inherit;
@@ -55,11 +55,11 @@ a.button.secondary {
     outline: none;
 }
 
-a.button.secondary:hover {
+em> a:hover {
     color: var(--text-color-link-hover);
 }
 
-a.button.secondary::after {
+em > a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -69,7 +69,7 @@ a.button.secondary::after {
     animation-duration: .75s;
 }
 
-a.button.secondary:hover::after {
+em > a:hover::after {
     background-color: var(--button-tertiary-underline-hover);
     animation-name: hover;
 }
@@ -80,7 +80,7 @@ a.button.secondary:hover::after {
     padding-left: 0.6rem;
 }
 
-.text-block p:first-of-type {
+.text-block p:first-of-type, p.button-container {
     padding-top: 0
 }
 
