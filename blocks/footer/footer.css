@@ -564,7 +564,8 @@
 
 @media (min-width: 90rem) {
   .footer__related-websites .related-websites {
-    padding-top: 2rem;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
   }
 }
 
@@ -702,7 +703,7 @@
   }
 
   .footer__navigation:first-child {
-    margin-top: var(--spacing-vertical-l)
+    margin-top: var(--spacing-vertical-xl)
   }
 }
 
