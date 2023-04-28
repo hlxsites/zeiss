@@ -7,6 +7,29 @@ function addFooterInteractions(block) {
     window.scrollTo(0, 0);
   };
 
+  if (window.screen.width < 768) {
+    const accordionItems = block.querySelectorAll('.accordion__item');
+
+    if (accordionItems) {
+      accordionItems.forEach((ele) => {
+        const accordionButton = ele.querySelector('.accordion__button');
+        const iconSymbol = accordionButton ? accordionButton.querySelector('.icon--symbol') : null;
+        const buttonSibling = accordionButton ? accordionButton.nextElementSibling : null;
+
+        if (accordionButton && buttonSibling) {
+          buttonSibling.classList.add('display-hide');
+
+          accordionButton.onclick = () => {
+            buttonSibling.classList.toggle('display-hide');
+            if (iconSymbol) {
+              iconSymbol.classList.toggle('is-active');
+            }
+          };
+        }
+      });
+    }
+  }
+
   block.querySelectorAll('.footer-tabs__tab').forEach((tab) => {
     tab.onclick = () => {
       const content = tab.nextElementSibling.querySelector('.footer-tabs__tab-content');
