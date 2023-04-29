@@ -123,7 +123,8 @@
 @media (min-width: 48rem) {
   .accordion__content-container {
     padding-left: .125rem;
-    padding-right: .125rem
+    padding-right: .125rem;
+    display: block;
   }
 }
 
