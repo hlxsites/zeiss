@@ -21,14 +21,16 @@ function addFooterInteractions(block) {
         accordionButton.onclick = () => {
           const countryAccordionButtons = document.querySelectorAll('.footer-country-switch .accordion__button');
 
-          countryAccordionButtons.forEach((x) => {
-            const countryButtonSibling = x.nextElementSibling;
+          if (countryAccordionButtons) {
+            countryAccordionButtons.forEach((x) => {
+              const countryButtonSibling = x.nextElementSibling;
 
-            if (x !== accordionButton && !countryButtonSibling.classList.contains('display-hide')) {
-              countryButtonSibling.classList.toggle('display-hide');
-              x.querySelector('.icon--symbol').classList.toggle('is-active');
-            }
-          });
+              if (x !== accordionButton && countryButtonSibling && !countryButtonSibling.classList.contains('display-hide')) {
+                countryButtonSibling.classList.toggle('display-hide');
+                x.querySelector('.icon--symbol').classList.toggle('is-active');
+              }
+            });
+          }
 
           accordionButtonSibling.classList.toggle('display-hide');
           accordionIconSymbol.classList.toggle('is-active');
