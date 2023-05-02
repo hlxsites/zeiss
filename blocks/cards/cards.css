@@ -96,6 +96,37 @@
     flex-direction: column
  }
 
+.item-info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-vertical-s);
+    margin-left: calc(var(--spacing-horizontal-xs) * -1);
+    margin-right: calc(var(--spacing-horizontal-xs) * -1)
+}
+
+.info-data {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: var(--spacing-horizontal-xs);
+    margin-right: var(--spacing-horizontal-xs)
+}
+
+.info-label, .info-value {
+    display: flex
+}
+
+.info-label {
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    margin-right: var(--spacing-horizontal-xxs)
+}
+
+
+.press-cards .cards a.button.primary {
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
 
 @media (min-width: 48rem) {
     .press-cards .cards > ul > li {

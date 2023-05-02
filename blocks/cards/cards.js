@@ -1,8 +1,11 @@
-import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { getLocale } from '../../scripts/utils.js';
 
 const isPressStyle = (block) => block.parentElement && block.parentElement.parentElement
       && block.parentElement.parentElement.classList.contains('press-cards');
-export default function decorate(block) {
+export default async function decorate(block) {
+  const locale = getLocale();
+  const placeholders = await fetchPlaceholders(`/${locale}`);
   /* format headers */
   if (block.querySelector('h2')) {
     block.querySelector('h2').classList.add('headline');
@@ -41,6 +44,20 @@ export default function decorate(block) {
         div.classList.add('text');
         div.classList.add('text--body-m');
         div.classList.add('spacing--s');
+        if (isPressStyle(block)) {
+          const downloadInfoElement = document.createElement('div');
+          downloadInfoElement.innerHTML = `<div class="item-info text--body-m">
+            <div class="info-data">
+              <span class="info-label text--bold">${placeholders.columnpages}:</span>
+              <span class="info-value">1</span>
+            </div>
+            <div class="info-data">
+              <span class="info-label text--bold">${placeholders.columnfilesize}:</span>
+              <span class="info-valuet"></span>
+            </div>
+          </div>`;
+          div.insertBefore(downloadInfoElement, div.querySelector('.button-container'));
+        }
       }
     });
     ul.append(li);
