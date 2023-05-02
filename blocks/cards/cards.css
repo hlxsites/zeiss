@@ -48,7 +48,7 @@
     /* Below 48rem, do not show more than 1 card in a row */
     grid-template-columns: repeat(auto-fit, minmax(calc((48rem - 2 * var(--section-margin) - var(--grid-gutter)) / 2), 1fr));
     grid-gap: var(--grid-gutter);
-  }
+}
 
   .cards .cards-card-body {
     margin-top: var(--spacing-vertical-m);
@@ -58,4 +58,60 @@
     width: 100%;
     object-fit: cover;
   }
+
+ .press-cards .cards > ul {
+     margin-top: var(--spacing-vertical-l);
+     justify-content: center;
+     height: auto;
+     display: flex;
+     flex-direction: column;
+}
+
+@media (min-width: 48rem) {
+    .press-cards .cards > ul {
+        height: 100%;
+        flex-direction: row
+    }
+}
+
+ .press-cards .cards > ul > li {
+     flex: 0 1 auto;
+     width: auto;
+     height: auto;
+     box-sizing: content-box;
+     border: 0;
+     padding-bottom: 0;
+     margin-top: 0;
+     padding-left: var(--spacing-horizontal-l);
+     padding-right: var(--spacing-horizontal-l);
+ }
+
+.press-cards .cards > ul > li > cards-card-image {
+    display: none;
+    margin-bottom: var(--spacing-vertical-l)
+ }
+
+.press-cards .cards > ul > li > cards-card-body {
+    display: flex;
+    flex-direction: column
+ }
+
+
+@media (min-width: 48rem) {
+    .press-cards .cards > ul > li {
+        width: 15rem
+    }
+    .press-cards .cards > ul > li > cards-card-image  {
+        display: flex;
+        flex: 0 0 auto;
+        height: auto;
+        align-items: flex-end
+    }
+
+    .press-cards .cards > ul > li > cards-card-content  {
+        flex: 1 0 auto;
+        align-self: stretch
+    }
+}
+
 
