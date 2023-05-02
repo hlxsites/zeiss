@@ -1,10 +1,7 @@
 import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 
-
-const isPressStyle = (block) => {
-  return block.parentElement && block.parentElement.parentElement
+const isPressStyle = (block) => block.parentElement && block.parentElement.parentElement
       && block.parentElement.parentElement.classList.contains('press-cards');
-}
 export default function decorate(block) {
   /* format headers */
   if (block.querySelector('h2')) {
@@ -15,21 +12,21 @@ export default function decorate(block) {
     block.querySelector('h2').classList.add('hl--sub-xs');
   }
 
-  block.querySelectorAll('h3').forEach((h3) =>  {
+  block.querySelectorAll('h3').forEach((h3) => {
     h3.classList.add('headline');
     h3.classList.add('headline__main');
     h3.classList.add('hl-xs');
     h3.classList.add('spacing--s');
   });
 
-  block.querySelectorAll('h4').forEach((h4) =>  {
+  block.querySelectorAll('h4').forEach((h4) => {
     h4.classList.add('headline__sub');
     h4.classList.add('hl-sub');
   });
   let headline;
   if (isPressStyle(block)) {
-     headline = block.children[0];
-     block.removeChild(headline);
+    headline = [...block.children[0]];
+    block.removeChild(headline);
   }
   /* change to ul, li */
   const ul = document.createElement('ul');
@@ -39,8 +36,7 @@ export default function decorate(block) {
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'cards-card-image';
-      }
-      else {
+      } else {
         div.className = 'cards-card-body';
         div.classList.add('text');
         div.classList.add('text--body-m');
