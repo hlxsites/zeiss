@@ -25,7 +25,7 @@ export default function decorate(block) {
   });
   let headline;
   if (isPressStyle(block)) {
-    headline = [...block.children[0]];
+    [headline] = block.children;
     block.removeChild(headline);
   }
   /* change to ul, li */
