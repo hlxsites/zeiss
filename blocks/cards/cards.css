@@ -54,7 +54,7 @@
     margin-top: var(--spacing-vertical-m);
   }
 
-  .cards > ul > li > div {
+  .section:not(.press-cards) .cards > ul > li > div {
     height: calc(100% - 3rem);
   }
 
