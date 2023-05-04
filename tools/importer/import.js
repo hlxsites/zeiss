@@ -188,10 +188,16 @@ function deriveImageSrc(image) {
   return src;
 }
 
+function curateImage(image, doc) {
+  const img = doc.createElement('img');
+  img.src = deriveImageSrc(image);
+  img.alt = image.getAttribute('alt') || '';
+  return img;
+}
+
 function handleTextMediaBlock(block, item, doc) {
   const imgDiv = doc.createElement('div');
-  const img = doc.createElement('img');
-  img.src = deriveImageSrc(block.querySelector('figure img'));
+  const img = curateImage(block.querySelector('figure img'), doc);
   imgDiv.appendChild(img);
 
   const caption = item.querySelector('figure figcaption .lazy-image__caption p');
@@ -253,14 +259,9 @@ function customLogic(main, doc, url) {
   if (doc.querySelector('.text-media-grid')) {
     const cells = [['cards']];
     doc.querySelectorAll('.text-media-grid .text-media-item-vertical').forEach((item) => {
-      const image = item.querySelector('.text-media-item-vertical__media figure img');
-      const src = deriveImageSrc(image);
-
-      const cardImg = doc.createElement('img');
-      cardImg.src = src;
-
+      const image = curateImage(item.querySelector('.text-media-item-vertical__media figure img'), doc);
       const text = item.querySelector('.text-media-item-vertical__text p');
-      const row = [cardImg, text.textContent];
+      const row = [image, text.textContent];
       cells.push(row);
     });
     const table = WebImporter.DOMUtils.createTable(cells, doc);
@@ -389,8 +390,7 @@ function customLogic(main, doc, url) {
 
       items.forEach((item) => {
         const imgDiv = doc.createElement('div');
-        const img = doc.createElement('img');
-        img.src = deriveImageSrc(item.querySelector('figure img'));
+        const img = curateImage(item.querySelector('figure img'), doc);
         imgDiv.appendChild(img);
         // Copyright
         if (item.querySelector('.lazy-image__copyright-text')) {
@@ -431,8 +431,7 @@ function customLogic(main, doc, url) {
     if (imageBlock) {
       imageBlock.forEach((item) => {
         const imgDiv = doc.createElement('div');
-        const img = doc.createElement('img');
-        img.src = deriveImageSrc(item.querySelector('figure img'));
+        const img = curateImage(item.querySelector('figure img'), doc);
         imgDiv.appendChild(img);
 
         const copyrightBlock = item.querySelector('.lazy-image__copyright-text');
