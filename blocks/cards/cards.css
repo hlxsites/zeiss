@@ -171,10 +171,18 @@
         align-self: stretch;
     }
 
-    .press-cards .cards > ul > li > .cards-card-body h3, .press-cards .cards > ul > li > .cards-card-body h4 {
-        flex: 1 0 auto;
+    .press-cards .cards > ul > li > .cards-card-body h3 {
+        flex: 0 0 auto;
         display: flex;
         align-self: stretch;
+    }
+
+    .press-cards .cards > ul > li > .cards-card-body h4 {
+        flex: 1 1 auto;
+        display: flex;
+        align-self: stretch;
+        margin-block-start: 1.33em;
+        margin-block-end: 1.33em;
     }
 }
 
