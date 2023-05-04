@@ -138,7 +138,7 @@
      padding-left: 3px;
      width: 1.5rem;
      height: 1.5rem;
-     color: var(--button-tertiary-text-default);
+     fill: var(--button-tertiary-text-default);
      transition: all ease-in-out .3s;
  }
 
