@@ -128,17 +128,21 @@
     font-weight: 500;
     display: flex;
     flex-direction: row;
+    fill: var(--button-tertiary-text-default);
  }
 
  .press-cards a.button.primary::after {
     width: 6rem;
  }
 
+ .press-cards .cards a.button.primary:hover {
+   fill: var(--button-primary-border-hover);
+ }
+
  .press-cards .download-item-icon {
      padding-left: 3px;
      width: 1.5rem;
      height: 1.5rem;
-     fill: var(--button-tertiary-text-default);
      transition: all ease-in-out .3s;
  }
 
