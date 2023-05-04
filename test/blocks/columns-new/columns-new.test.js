@@ -3,7 +3,7 @@
 
 import { readFile } from '@web/test-runner-commands';
 import { expect } from '@esm-bundle/chai';
-import decorate from '../../../blocks/columns/columns.js';
+import decorate from '../../../blocks/columns-new/columns-new.js';
 import { getLocale } from '../../../scripts/utils.js';
 import loadPlaceholders from '../../test-utlis.js';
 

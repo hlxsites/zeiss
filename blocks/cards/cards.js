@@ -1,11 +1,12 @@
 import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/lib-franklin.js';
 import { getLocale } from '../../scripts/utils.js';
 
-const isPressStyle = (block) => block.parentElement && block.parentElement.parentElement
+const hasPressStyle = (block) => block.parentElement && block.parentElement.parentElement
       && block.parentElement.parentElement.classList.contains('press-cards');
 export default async function decorate(block) {
   const locale = getLocale();
   const placeholders = await fetchPlaceholders(`/${locale}`);
+  const isPressStyle = hasPressStyle(block);
   /* format headers */
   if (block.querySelector('h2')) {
     block.querySelector('h2').classList.add('headline');
@@ -27,7 +28,7 @@ export default async function decorate(block) {
     h4.classList.add('hl-sub');
   });
   let headline;
-  if (isPressStyle(block)) {
+  if (isPressStyle) {
     [headline] = block.children;
     block.removeChild(headline);
   }
@@ -44,19 +45,21 @@ export default async function decorate(block) {
         div.classList.add('text');
         div.classList.add('text--body-m');
         div.classList.add('spacing--s');
-        if (isPressStyle(block)) {
+        if (isPressStyle) {
           const downloadInfoElement = document.createElement('div');
-          downloadInfoElement.innerHTML = `<div class="item-info text--body-m">
-            <div class="info-data">
-              <span class="info-label text--bold">${placeholders.columnpages}:</span>
-              <span class="info-value">1</span>
+          const downloadButton = div.querySelector('.button-container');
+          downloadInfoElement.innerHTML = `
+            <div class="cards-info-data">
+              <span class="cards-info-label text--bold">${placeholders.columnpages}:</span>
+              <span class="cards-info-value">1</span>
             </div>
-            <div class="info-data">
-              <span class="info-label text--bold">${placeholders.columnfilesize}:</span>
-              <span class="info-valuet"></span>
+            <div class="cards-info-data">
+              <span class="cards-info-label text--bold">${placeholders.columnfilesize}:</span>
+              <span class="cards-info-value"></span>
             </div>
           </div>`;
-          div.insertBefore(downloadInfoElement, div.querySelector('.button-container'));
+          downloadInfoElement.classList.add('cards-item-info', 'text--body-m');
+          div.insertBefore(downloadInfoElement, downloadButton);
         }
       }
     });
@@ -64,7 +67,7 @@ export default async function decorate(block) {
   });
   ul.querySelectorAll('img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.textContent = '';
-  if (isPressStyle(block)) {
+  if (isPressStyle) {
     block.append(headline);
   }
   block.append(ul);

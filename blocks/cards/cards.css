@@ -76,6 +76,8 @@
 
  .press-cards .cards > ul > li {
      flex: 0 1 auto;
+     display: flex;
+     flex-direction: column;
      width: auto;
      height: auto;
      box-sizing: content-box;
@@ -86,62 +88,74 @@
      padding-right: var(--spacing-horizontal-l);
  }
 
-.press-cards .cards > ul > li > cards-card-image {
+ .press-cards .cards > ul > li > .cards-card-image {
     display: none;
     margin-bottom: var(--spacing-vertical-l)
  }
 
-.press-cards .cards > ul > li > cards-card-body {
+ .press-cards .cards > ul > li > .cards-card-body {
     display: flex;
     flex-direction: column
  }
 
-.item-info {
+ .press-cards .cards .cards-item-info {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: var(--spacing-vertical-s);
     margin-left: calc(var(--spacing-horizontal-xs) * -1);
     margin-right: calc(var(--spacing-horizontal-xs) * -1)
-}
+ }
 
-.info-data {
+ .press-cards .cards .cards-info-data {
     display: flex;
     flex-wrap: nowrap;
     margin-left: var(--spacing-horizontal-xs);
     margin-right: var(--spacing-horizontal-xs)
-}
+ }
 
-.info-label, .info-value {
-    display: flex
-}
+ .press-cards .cards .cards-info-label, .cards-info-value {
+    display: flex;
+ }
 
-.info-label {
+ .press-cards .cards .cards-info-label {
     flex: 0 0 auto;
     flex-wrap: nowrap;
     margin-right: var(--spacing-horizontal-xxs)
-}
-
+ }
 
 .press-cards .cards a.button.primary {
     padding-bottom: 10px;
     font-weight: 500;
 }
 
-
 @media (min-width: 48rem) {
     .press-cards .cards > ul > li {
-        width: 15rem
-    }
-    .press-cards .cards > ul > li > cards-card-image  {
-        display: flex;
-        flex: 0 0 auto;
-        height: auto;
-        align-items: flex-end
+        width: 15rem;
     }
 
-    .press-cards .cards > ul > li > cards-card-content  {
+    .press-cards .cards > ul > li > .cards-card-image {
+        flex: 0 0 auto;
+        display: inline-block;
+        height: auto;
+        align-items: flex-end;
+        min-height: 20rem;
+        box-shadow: var(--elevation-highlight);
+    }
+
+    .press-cards .cards > ul > li > .cards-card-image > picture {
+        display: block;
+        width: 100%;
+    }
+
+    .press-cards .cards > ul > li > .cards-card-body {
         flex: 1 0 auto;
-        align-self: stretch
+        align-self: stretch;
+    }
+
+    .press-cards .cards > ul > li > .cards-card-body h3, .press-cards .cards > ul > li > .cards-card-body h4 {
+        flex: 1 0 auto;
+        display: flex;
+        align-self: stretch;
     }
 }
 
