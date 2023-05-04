@@ -66,10 +66,10 @@ export default async function decorate(block) {
             </span>   
             <svg class="download-item-icon" focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink"">
               <use xlink:href="/icons/symbols-sprite.svg#svgsymbol-external-link"></use>
-             </svg>`;
+            </svg>`;
           downloadButton.querySelector('a').replaceChildren(...downloadButtonIconElement.children);
           downloadInfoElement.innerHTML = `
-            <div class="cards-info-data">
+           <div class="cards-info-data">
               <span class="cards-info-label text--bold">${placeholders.columnpages}:</span>
               <span class="cards-info-value">1</span>
             </div>
@@ -77,7 +77,7 @@ export default async function decorate(block) {
               <span class="cards-info-label text--bold">${placeholders.columnfilesize}:</span>
               <span class="cards-info-value"></span>
             </div>
-          </div>`;
+           </div>`;
           fetch(downloadButton.querySelector('a').href, { mode: 'no-cors' }).then((req) => req.blob()).then((blob) => {
             downloadInfoElement.querySelectorAll('.cards-info-value')[1].textContent = formatBytes(blob.size);
           });
