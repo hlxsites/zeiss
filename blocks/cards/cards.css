@@ -135,7 +135,7 @@
  }
 
  .press-cards .download-item-icon {
-     padding-left: 0.19rem;
+     padding-left: 3px;
      width: 1.5rem;
      height: 1.5rem;
      color: var(--button-tertiary-text-default);

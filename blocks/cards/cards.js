@@ -77,7 +77,7 @@ export default async function decorate(block) {
               <span class="cards-info-value"></span>
             </div>
           </div>`;
-          fetch(downloadButton.querySelector('a').href, { mode: 'no-cors'}).then((req) => req.blob()).then((blob) => {
+          fetch(downloadButton.querySelector('a').href, { mode: 'no-cors' }).then((req) => req.blob()).then((blob) => {
             downloadInfoElement.querySelectorAll('.cards-info-value')[1].textContent = formatBytes(blob.size);
           });
           downloadInfoElement.classList.add('cards-item-info', 'text--body-m');
