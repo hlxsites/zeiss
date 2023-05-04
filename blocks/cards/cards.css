@@ -169,6 +169,7 @@
     .press-cards .cards > ul > li > .cards-card-body {
         flex: 1 0 auto;
         align-self: stretch;
+        font-weight: 300;
     }
 
     .press-cards .cards > ul > li > .cards-card-body h3 {
@@ -181,7 +182,6 @@
         flex: 1 1 auto;
         display: flex;
         align-self: stretch;
-        margin-block-start: 1.33em;
         margin-block-end: 1.33em;
     }
 }
