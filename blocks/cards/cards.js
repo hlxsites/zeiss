@@ -3,6 +3,16 @@ import { getLocale } from '../../scripts/utils.js';
 
 const hasPressStyle = (block) => block.parentElement && block.parentElement.parentElement
       && block.parentElement.parentElement.classList.contains('press-cards');
+
+function formatBytes(bytes, decimals = 1) {
+  if (!+bytes) return '0 Bytes';
+  const k = 1000;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
+}
+
 export default async function decorate(block) {
   const locale = getLocale();
   const placeholders = await fetchPlaceholders(`/${locale}`);
@@ -48,6 +58,15 @@ export default async function decorate(block) {
         if (isPressStyle) {
           const downloadInfoElement = document.createElement('div');
           const downloadButton = div.querySelector('.button-container');
+          const downloadButtonIconElement = document.createElement('span');
+          downloadButtonIconElement.innerHTML = `
+            <span>
+                <span>Download</span>
+            </span>   
+            <svg class="download-item-icon" focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink"">
+              <use xlink:href="/icons/symbols-sprite.svg#svgsymbol-external-link"></use>
+             </svg>`;
+          downloadButton.querySelector('a').replaceChildren(...downloadButtonIconElement.children);
           downloadInfoElement.innerHTML = `
             <div class="cards-info-data">
               <span class="cards-info-label text--bold">${placeholders.columnpages}:</span>
@@ -58,6 +77,9 @@ export default async function decorate(block) {
               <span class="cards-info-value"></span>
             </div>
           </div>`;
+          fetch(downloadButton.querySelector('a').href, { mode: 'no-cors'}).then((req) => req.blob()).then((blob) => {
+            downloadInfoElement.querySelectorAll('.cards-info-value')[1].textContent = formatBytes(blob.size);
+          });
           downloadInfoElement.classList.add('cards-item-info', 'text--body-m');
           div.insertBefore(downloadInfoElement, downloadButton);
         }

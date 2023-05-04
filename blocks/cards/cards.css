@@ -123,10 +123,24 @@
     margin-right: var(--spacing-horizontal-xxs)
  }
 
-.press-cards .cards a.button.primary {
+ .press-cards .cards a.button.primary {
     padding-bottom: 10px;
     font-weight: 500;
-}
+    display: flex;
+    flex-direction: row;
+ }
+
+ .press-cards a.button.primary::after {
+    width: 6rem;
+ }
+
+ .press-cards .download-item-icon {
+     padding-left: 0.19rem;
+     width: 1.5rem;
+     height: 1.5rem;
+     color: var(--button-tertiary-text-default);
+     transition: all ease-in-out .3s;
+ }
 
 @media (min-width: 48rem) {
     .press-cards .cards > ul > li {
