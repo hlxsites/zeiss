@@ -153,6 +153,7 @@
 
     .press-cards .cards > ul > li > .cards-card-image {
         flex: 0 0 auto;
+        cursor: pointer;
         display: inline-block;
         height: auto;
         align-items: flex-end;

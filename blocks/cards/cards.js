@@ -58,6 +58,7 @@ export default async function decorate(block) {
         if (isPressStyle) {
           const downloadInfoElement = document.createElement('div');
           const downloadButton = div.querySelector('.button-container');
+          div.parentElement.querySelector('.cards-card-image').href = downloadButton.querySelector('a').href;
           const downloadButtonIconElement = document.createElement('span');
           downloadButtonIconElement.innerHTML = `
             <span>
