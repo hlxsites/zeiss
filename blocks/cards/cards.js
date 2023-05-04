@@ -44,10 +44,10 @@ export default async function decorate(block) {
   }
   /* change to ul, li */
   const ul = document.createElement('ul');
-  for (const row of [...block.children]) {
+  [...block.children].forEach((row) => {
     const li = document.createElement('li');
     li.innerHTML = row.innerHTML;
-    for (const div of [...li.children]) {
+    [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'cards-card-image';
       } else {
@@ -77,16 +77,16 @@ export default async function decorate(block) {
               <span class="cards-info-value"></span>
             </div>
           </div>`;
-          await fetch(downloadButton.querySelector('a').href, { mode: 'no-cors' }).then((req) => req.blob()).then((blob) => {
+          fetch(downloadButton.querySelector('a').href, { mode: 'no-cors' }).then((req) => req.blob()).then((blob) => {
             downloadInfoElement.querySelectorAll('.cards-info-value')[1].textContent = formatBytes(blob.size);
           });
           downloadInfoElement.classList.add('cards-item-info', 'text--body-m');
           div.insertBefore(downloadInfoElement, downloadButton);
         }
       }
-    };
+    });
     ul.append(li);
-  };
+  });
   ul.querySelectorAll('img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.textContent = '';
   if (isPressStyle) {
