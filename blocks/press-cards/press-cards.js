@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import {createOptimizedPicture, fetchPlaceholders} from '../../scripts/lib-franklin.js';
 import { getLocale } from '../../scripts/utils.js';
 
 function formatBytes(bytes, decimals = 1) {
@@ -76,6 +76,7 @@ export default async function decorate(block) {
     });
     ul.append(li);
   });
+  ul.querySelectorAll('img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.textContent = '';
   block.append(...headline.children);
   block.append(ul);
