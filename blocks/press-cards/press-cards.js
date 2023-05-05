@@ -1,4 +1,4 @@
-import {createOptimizedPicture, fetchPlaceholders} from '../../scripts/lib-franklin.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/lib-franklin.js';
 import { getLocale } from '../../scripts/utils.js';
 
 function formatBytes(bytes, decimals = 1) {
