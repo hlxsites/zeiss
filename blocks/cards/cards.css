@@ -40,155 +40,26 @@
 }
 
 .cards > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
 
-    /* Below 48rem, do not show more than 1 card in a row */
-    grid-template-columns: repeat(auto-fit, minmax(calc((48rem - 2 * var(--section-margin) - var(--grid-gutter)) / 2), 1fr));
-    grid-gap: var(--grid-gutter);
+  /* Below 48rem, do not show more than 1 card in a row */
+  grid-template-columns: repeat(auto-fit, minmax(calc((48rem - 2 * var(--section-margin) - var(--grid-gutter)) / 2), 1fr));
+  grid-gap: var(--grid-gutter);
 }
 
-  .cards .cards-card-body {
-    margin-top: var(--spacing-vertical-m);
-  }
-
-  .section:not(.press-cards) .cards > ul > li > div {
-    height: calc(100% - 3rem);
-  }
-
-  .cards > ul > li img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
- .press-cards .cards > ul {
-     margin-top: var(--spacing-vertical-l);
-     justify-content: center;
-     height: auto;
-     display: flex;
-     flex-direction: column;
+.cards .cards-card-body {
+  margin-top: var(--spacing-vertical-m);
 }
 
-@media (min-width: 48rem) {
-    .press-cards .cards > ul {
-        height: 100%;
-        flex-direction: row
-    }
+.cards > ul > li > div {
+  height: calc(100% - 3rem);
 }
 
- .press-cards .cards > ul > li {
-     flex: 0 1 auto;
-     display: flex;
-     flex-direction: column;
-     width: auto;
-     height: auto;
-     box-sizing: content-box;
-     border: 0;
-     padding-bottom: 0;
-     margin-top: 0;
-     padding-left: var(--spacing-horizontal-l);
-     padding-right: var(--spacing-horizontal-l);
- }
-
- .press-cards .cards > ul > li > .cards-card-image {
-    display: none;
-    margin-bottom: var(--spacing-vertical-l)
- }
-
- .press-cards .cards > ul > li > .cards-card-body {
-    display: flex;
-    flex-direction: column
- }
-
- .press-cards .cards .cards-item-info {
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: var(--spacing-vertical-s);
-    margin-left: calc(var(--spacing-horizontal-xs) * -1);
-    margin-right: calc(var(--spacing-horizontal-xs) * -1)
- }
-
- .press-cards .cards .cards-info-data {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-left: var(--spacing-horizontal-xs);
-    margin-right: var(--spacing-horizontal-xs)
- }
-
- .press-cards .cards .cards-info-label, .cards-info-value {
-    display: flex;
- }
-
- .press-cards .cards .cards-info-label {
-    flex: 0 0 auto;
-    flex-wrap: nowrap;
-    margin-right: var(--spacing-horizontal-xxs)
- }
-
- .press-cards .cards a.button.primary {
-    padding-bottom: 10px;
-    font-weight: 500;
-    display: flex;
-    flex-direction: row;
-    fill: var(--button-tertiary-text-default);
- }
-
- .press-cards a.button.primary::after {
-    width: 6rem;
- }
-
- .press-cards .cards a.button.primary:hover {
-   fill: var(--button-primary-border-hover);
- }
-
- .press-cards .download-item-icon {
-     padding-left: 3px;
-     width: 1.5rem;
-     height: 1.5rem;
-     transition: all ease-in-out .3s;
- }
-
-@media (min-width: 48rem) {
-    .press-cards .cards > ul > li {
-        width: 15rem;
-    }
-
-    .press-cards .cards > ul > li > .cards-card-image {
-        flex: 0 0 auto;
-        cursor: pointer;
-        display: inline-block;
-        height: auto;
-        align-items: flex-end;
-        min-height: 20rem;
-        box-shadow: var(--elevation-highlight);
-    }
-
-    .press-cards .cards > ul > li > .cards-card-image > picture {
-        display: block;
-        width: 100%;
-    }
-
-    .press-cards .cards > ul > li > .cards-card-body {
-        flex: 1 0 auto;
-        align-self: stretch;
-        font-weight: 300;
-    }
-
-    .press-cards .cards > ul > li > .cards-card-body h3 {
-        flex: 0 0 auto;
-        display: flex;
-        align-self: stretch;
-    }
-
-    .press-cards .cards > ul > li > .cards-card-body h4 {
-        flex: 1 1 auto;
-        display: flex;
-        align-self: stretch;
-        margin-block-end: 1.33em;
-    }
+.cards > ul > li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
-
