@@ -47,8 +47,36 @@ function articleTemplate(noCurry) {
                         </div>`;
 }
 
+function getArticle(argArray) {
+  const article = argArray[0];
+  const placeholders = argArray[1];
+
+  // <div class="article-list-item">
+  return `
+    <a href="${article.path}">
+      <figure>
+        <img src="${article.image}" alt="${article.imagealt || article.title}" title="${article.title}">
+        </img>
+      </figure>
+    </a>
+    <div class="article-list-item-eyebrow">${getFormattedDate(new Date(article.publicationdate), getLocale())}</div>
+    <div class="article-list-item-headline">${article.title}</div>
+    <div class="article-list-item-info">Presseinformation ${article.readingtime || '1 min'} ${placeholders.readingtime}</div>
+  `;
+}
+
 function template(articles, placeholders) {
-  return `<div class="featured-articles-with-teaser featured-articles-with-teaser--background-grey">
+  const x = `<div class="article-list-header">
+    <h2 id="${placeholders.furtherarticles.toLowerCase().replace(/\s/gm, '-')}">
+      ${placeholders.furtherarticles}
+    </h2>
+
+    <div class="article-list-items">
+      ${articles.map((article) => [article, placeholders]).map(getArticle).join('')}
+    </div>
+  </div>`;
+
+  return x + `<div class="featured-articles-with-teaser featured-articles-with-teaser--background-grey">
     <div class="grid__container">
         <div class="grid__structure">
             <div class="grid__column grid__column--100">
@@ -68,11 +96,11 @@ function template(articles, placeholders) {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div
                         class="grid__structure featured-articles-with-teaser__items featured-articles-with-teaser__items--${articles.length}">
                         ${articles.map((article) => [article, placeholders]).map(articleTemplate).join('')}
-                        
+
 
                         <div
                             class="grid__column featured-articles-with-teaser__item featured-articles-with-teaser__item--teaser">
