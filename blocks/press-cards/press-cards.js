@@ -80,6 +80,6 @@ export default async function decorate(block) {
     ul.append(li);
   });
   block.textContent = '';
-  block.append(headline);
+  block.append(...headline.children);
   block.append(ul);
 }
