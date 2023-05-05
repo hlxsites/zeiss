@@ -70,9 +70,6 @@ export default async function decorate(block) {
              <span class="press-cards-info-value"></span>
            </div>
           </div>`;
-        fetch(downloadButton.querySelector('a').href, { mode: 'no-cors' }).then((req) => req.blob()).then((blob) => {
-          downloadInfoElement.querySelectorAll('.press-cards-info-value')[1].textContent = formatBytes(blob.size);
-        });
         downloadInfoElement.classList.add('press-cards-item-info', 'text--body-m');
         div.insertBefore(downloadInfoElement, downloadButton);
       }
@@ -82,4 +79,9 @@ export default async function decorate(block) {
   block.textContent = '';
   block.append(...headline.children);
   block.append(ul);
+  block.querySelectorAll('.press-cards-card-body').forEach((pressCardBody) => fetch(pressCardBody.querySelector('a').href)
+    .then((req) => req.blob())
+    .then((blob) => {
+      pressCardBody.querySelectorAll('.press-cards-info-value')[1].textContent = formatBytes(blob.size);
+    }));
 }
