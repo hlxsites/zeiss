@@ -40,26 +40,26 @@
 }
 
 .cards > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
 
-  /* Below 48rem, do not show more than 1 card in a row */
-  grid-template-columns: repeat(auto-fit, minmax(calc((48rem - 2 * var(--section-margin) - var(--grid-gutter)) / 2), 1fr));
-  grid-gap: var(--grid-gutter);
-}
+    /* Below 48rem, do not show more than 1 card in a row */
+    grid-template-columns: repeat(auto-fit, minmax(calc((48rem - 2 * var(--section-margin) - var(--grid-gutter)) / 2), 1fr));
+    grid-gap: var(--grid-gutter);
+  }
 
-.cards .cards-card-body {
-  margin-top: var(--spacing-vertical-m);
-}
+  .cards .cards-card-body {
+    margin-top: var(--spacing-vertical-m);
+  }
 
-.cards > ul > li > div {
-  height: calc(100% - 3rem);
-}
+  .cards > ul > li > div {
+    height: calc(100% - 3rem);
+  }
 
-.cards > ul > li img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  .cards > ul > li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
