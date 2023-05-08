@@ -50,9 +50,8 @@ function setSlideShowPaginationWrapper(carouselDiv, props) {
   carouselDiv.appendChild(slideShowWrapper);
 }
 
-function template(props) {
-  const carouselDiv = document.createElement('div');
-  carouselDiv.classList.add('image-slideshow', 'grid__container');
+function template(props, block) {
+  block.classList.add('image-slideshow', 'grid__container');
 
   if (props && props.items) {
     const ul = document.createElement('ul');
@@ -101,13 +100,10 @@ function template(props) {
       ul.appendChild(li);
     });
 
-    carouselDiv.appendChild(ul);
-
-    setLeftRightButton(carouselDiv);
-    setSlideShowPaginationWrapper(carouselDiv, props);
+    block.appendChild(ul);
+    setLeftRightButton(block);
+    setSlideShowPaginationWrapper(block, props);
   }
-
-  return carouselDiv;
 }
 
 function addSwiperListener(carousel) {
@@ -208,9 +204,8 @@ export default async function decorate(block) {
     };
   });
 
-  block.textContent = '';
-  block.append(template({ items }));
+  block.innerHTML = '';
+  template({ items }, block);
   decorateIcons(block, true);
-
-  addSwiperListener(block.querySelector('.image-slideshow'));
+  addSwiperListener(block);
 }
