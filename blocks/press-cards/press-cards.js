@@ -42,7 +42,10 @@ export default async function decorate(block) {
     li.innerHTML = row.innerHTML;
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'press-cards-card-image';
+        const a = document.createElement('a');
+        a.className = 'press-cards-card-image';
+        a.innerHTML = div.innerHTML;
+        div.replaceWith(a);
       } else {
         div.className = 'press-cards-card-body';
         div.classList.add('text');
