@@ -44,6 +44,7 @@ export default async function decorate(block) {
       if (div.children.length === 1 && div.querySelector('picture')) {
         const a = document.createElement('a');
         a.className = 'press-cards-card-image';
+        a.setAttribute('target', '_blank');
         a.innerHTML = div.innerHTML;
         div.replaceWith(a);
       } else {
