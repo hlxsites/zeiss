@@ -51,7 +51,6 @@ function getArticle(argArray) {
   const article = argArray[0];
   const placeholders = argArray[1];
 
-  // <div class="article-list-item">
   return `
     <a href="${article.path}">
       <figure>
@@ -61,20 +60,31 @@ function getArticle(argArray) {
     </a>
     <div class="article-list-item-eyebrow">${getFormattedDate(new Date(article.publicationdate), getLocale())}</div>
     <div class="article-list-item-headline">${article.title}</div>
-    <div class="article-list-item-info">Presseinformation ${article.readingtime || '1 min'} ${placeholders.readingtime}</div>
+
+    <div class="article-list-item-info">Presseinformation - ${article.readingtime || '1 min'} ${placeholders.readingtime.toUpperCase()}</div>
   `;
 }
 
 function template(articles, placeholders) {
-  const x = `<div class="article-list-header">
-    <h2 id="${placeholders.furtherarticles.toLowerCase().replace(/\s/gm, '-')}">
-      ${placeholders.furtherarticles}
-    </h2>
+  const x = `
 
     <div class="article-list-items">
+      <h2 id="${placeholders.furtherarticles.toLowerCase().replace(/\s/gm, '-')}">
+        ${placeholders.furtherarticles}
+      </h2>
       ${articles.map((article) => [article, placeholders]).map(getArticle).join('')}
+
+      <div class="all-articles">
+        <h3>Alle Pressemeldungen</h3>
+        <p>Finden Sie hier neuesten Presseinformationen von ZEISS.</p>
+        <a>Zu den Pressemeldungen
+          <svg focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <use xlink:href="/icons/symbols-sprite.svg#svgsymbol-external-link"></use>
+          </svg>
+        </a>
+      </div>
     </div>
-  </div>`;
+  `;
 
   return x + `<div class="featured-articles-with-teaser featured-articles-with-teaser--background-grey">
     <div class="grid__container">
