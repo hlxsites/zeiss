@@ -57,10 +57,9 @@ function getArticle(argArray) {
         <img src="${article.image}" alt="${article.imagealt || article.title}" title="${article.title}">
         </img>
       </figure>
+      <div class="article-list-item-eyebrow">${getFormattedDate(new Date(article.publicationdate), getLocale())}</div>
+      <div class="article-list-item-headline">${article.title}</div>
     </a>
-    <div class="article-list-item-eyebrow">${getFormattedDate(new Date(article.publicationdate), getLocale())}</div>
-    <div class="article-list-item-headline">${article.title}</div>
-
     <div class="article-list-item-info">Presseinformation - ${article.readingtime || '1 min'} ${placeholders.readingtime.toUpperCase()}</div>
   `;
 }
