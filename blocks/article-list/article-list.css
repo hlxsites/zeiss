@@ -24,6 +24,19 @@
   width: -50px;
 }
 
+/* .article-list-items a {
+  text-decoration: none;
+} */
+
+a:hover .article-list-item-headline{
+  text-decoration: underline;
+}
+
+/* .article-list-item-eyebrow {
+  pointer-events: none;
+  text-decoration: none;
+} */
+
 .article-list-items img {
   height: 300px;
   object-fit: cover;
