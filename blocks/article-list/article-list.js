@@ -47,12 +47,9 @@ function articleTemplate(noCurry) {
                         </div>`;
 }
 
-function getArticle(argArray) {
-  const article = argArray[0];
-  const placeholders = argArray[1];
-
+function getArticle(article, placeholders, itemid) {
   return `
-    <a href="${article.path}">
+    <a href="${article.path}" id="art${itemid}a">
       <figure>
         <img src="${article.image}" alt="${article.imagealt || article.title}" title="${article.title}">
         </img>
@@ -60,20 +57,23 @@ function getArticle(argArray) {
       <div class="article-list-item-eyebrow">${getFormattedDate(new Date(article.publicationdate), getLocale())}</div>
       <div class="article-list-item-headline">${article.title}</div>
     </a>
-    <div class="article-list-item-info">Presseinformation - ${article.readingtime || '1 min'} ${placeholders.readingtime.toUpperCase()}</div>
+    <div class="article-list-item-info" id="art${itemid}b">Presseinformation - ${article.readingtime || '1 min'} ${placeholders.readingtime.toUpperCase()}</div>
   `;
 }
 
 function template(articles, placeholders) {
-  const x = `
+  let articlesHTML = '';
+  for (let i = 0; i < articles.length; i += 1) {
+    articlesHTML += getArticle(articles[i], placeholders, i);
+  }
 
+  const x = `
     <div class="article-list-items">
       <h2 id="${placeholders.furtherarticles.toLowerCase().replace(/\s/gm, '-')}">
         ${placeholders.furtherarticles}
       </h2>
-      ${articles.map((article) => [article, placeholders]).map(getArticle).join('')}
-
-      <div class="all-articles">
+      ${articlesHTML}
+      <div class="all-articles" id="art${articles.length}a">
         <h3>Alle Pressemeldungen</h3>
         <p>Finden Sie hier neuesten Presseinformationen von ZEISS.</p>
         <a>Zu den Pressemeldungen
