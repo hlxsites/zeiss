@@ -248,6 +248,10 @@
     main {
       padding-top: 8rem;
     }
+
+    :root {
+      --is-large-screen: 1;
+    }
   }
 
   main img {
