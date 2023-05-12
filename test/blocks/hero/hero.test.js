@@ -31,7 +31,7 @@ describe('Hero block', () => {
       pressrelease: 'PressRel',
       newseventsbase: 'news/events',
       backtonewsevents: 'back to overview',
-      herohref: 'https://www.zeiss.de/semiconductor-manufacturing-technology/news-und-events.html',
+      newsandeventsurl: 'https://www.zeiss.de/semiconductor-manufacturing-technology/news-und-events.html',
     };
     addBackLink(block, 'de', ph, 'news/events/someevent');
 
