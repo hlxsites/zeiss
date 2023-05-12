@@ -11,7 +11,7 @@ function getArticle(article, placeholders, itemid) {
       <div class="article-list-item-eyebrow">${getFormattedDate(new Date(article.publicationdate), getLocale())}</div>
       <div class="article-list-item-headline">${article.title}</div>
     </a>
-    <div class="article-list-item-info" id="art${itemid}b">Presseinformation - ${article.readingtime || '1 min'} ${placeholders.readingtime.toUpperCase()}</div>
+    <div class="article-list-item-info" id="art${itemid}b">${placeholders.pressrelease} - ${article.readingtime || '1 min'} ${placeholders.readingtime.toUpperCase()}</div>
   `;
 }
 
@@ -28,9 +28,9 @@ function template(articles, placeholders) {
       </h2>
       ${articlesHTML}
       <div class="all-articles" id="art${articles.length}a">
-        <h3>Alle Pressemeldungen</h3>
-        <p>Finden Sie hier neuesten Presseinformationen von ZEISS.</p>
-        <a>Zu den Pressemeldungen
+        <h3>${placeholders.furtherarticlesheadline}</h3>
+        <p>${placeholders.furtherarticlesteaser}</p>
+        <a href="${placeholders.furtherarticleshref}">${placeholders.furtherarticlesbutton}
           <svg focusable="false" xmlns:xlink="http://www.w3.org/1999/xlink">
             <use xlink:href="/icons/symbols-sprite.svg#svgsymbol-external-link"></use>
           </svg>
