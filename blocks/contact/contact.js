@@ -73,26 +73,15 @@ function setProfileContact(profileItem, placeholders, item) {
 }
 
 function template(block, items, placeholders) {
-  const div = document.createElement('div');
-
-  const profileDetails = document.createElement('div');
-  profileDetails.classList.add('profile-collection__settings', 'grid__container', `primary-count-${items.length}`);
-
-  const innerProfileDetailsDiv = document.createElement('div');
-  innerProfileDetailsDiv.classList.add('grid__structure', 'profile-collection__structure', 'profile-collection__structure--primary');
+  block.classList.add('profile-collection__settings', 'grid__container', `primary-count-${items.length}`, 'grid__structure', 'profile-collection__structure', 'profile-collection__structure--primary');
 
   items.forEach((item) => {
     const profileItem = document.createElement('div');
     profileItem.classList.add('profile-collection__item');
-
     setProfileHeading(profileItem, placeholders, item);
     setProfileContact(profileItem, placeholders, item);
-    innerProfileDetailsDiv.appendChild(profileItem);
+    block.appendChild(profileItem);
   });
-
-  profileDetails.appendChild(innerProfileDetailsDiv);
-  div.appendChild(profileDetails);
-  block.appendChild(div);
 }
 
 export default async function decorate(block) {

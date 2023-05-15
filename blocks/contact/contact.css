@@ -7,6 +7,8 @@
   --module-border-color-bottom: var(--border-color-inactive);
   --module-border-color-expandable: var(--border-color-active);
   --spacer-border-color: var(--border-color-inactive);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .profile-collection__settings {
