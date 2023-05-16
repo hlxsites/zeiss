@@ -96,8 +96,12 @@
         display: inline-block;
         height: auto;
         align-items: flex-end;
-        min-height: 20rem;
+        width: 15rem;
         box-shadow: var(--elevation-highlight);
+    }
+
+    .landscape .press-cards > ul > li > .press-cards-card-image {
+        width: 20rem;
     }
 
     .press-cards > ul > li > .press-cards-card-image > picture {
