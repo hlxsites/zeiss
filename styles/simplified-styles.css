@@ -109,6 +109,7 @@ a:hover {
 @media (min-width: 48rem) {
     :root {
         --section-margin: 2rem;
+        --is-large-screen: 1;
     }
 }
 
@@ -137,7 +138,8 @@ a:hover {
 }
 
 /* TODO: Sections not yet simplified are added as :not exceptions. This list  should shrink as we simplify sections */
-main .section:not(.carousel-container):not(.text-block):not(.columns-container):not(.article-list-container):not(.footer):not(.columns-new-container):not(.collapse-container):not(.hero-container):not(.social-container) {
+
+main .section:not(.carousel-container):not(.text-block):not(.columns-container):not(.footer):not(.columns-new-container):not(.collapse-container):not(.hero-container):not(.social-container) {
     margin: 0 auto;
     margin-top: var(--spacing-vertical-xxl);
     margin-bottom: var(--spacing-vertical-xxl);
@@ -148,7 +150,7 @@ main .section:not(.carousel-container):not(.text-block):not(.columns-container):
 }
 
 /* TODO: Block not yet simplified are added as :not exceptions. This list  should shrink as we simplify sections */
-.block:not(.header):not(.cards):not(.press-cards):not(.collapse):not(.carousel):not(.columns):not(.article-list):not(.footer):not(.columns-new) {
+.block:not(.header):not(.cards):not(.press-cards):not(.collapse):not(.carousel):not(.columns):not(.footer):not(.columns-new) {
     position: relative;
     width: 100%;
     display: grid;
