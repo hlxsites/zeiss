@@ -392,6 +392,7 @@ function customLogic(main, doc, url) {
     const cells = [['Article List']];
     doc.querySelector('.featured-articles-with-teaser').after(doc.createElement('hr'));
     const table = WebImporter.DOMUtils.createTable(cells, doc);
+    doc.querySelector('.featured-articles-with-teaser').replaceWith(table);
   }
 
   // Add carousel block or text-media autoblock
