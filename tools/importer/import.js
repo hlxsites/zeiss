@@ -350,6 +350,12 @@ function customLogic(main, doc, url) {
   // Add downloads block
   if (doc.querySelector('.downloads-wrapper')) {
     const cells = [['press-cards']];
+    let styleTable;
+    if (doc.querySelectorAll('.download-item--landscape').length > 0) {
+      const styleCells = [['Section Metadata']];
+      styleCells.push(['Style', 'landscape']);
+      styleTable = WebImporter.DOMUtils.createTable(styleCells, doc);
+    }
     const headline = doc.createElement('h2');
     headline.textContent = doc.querySelector('.downloads-wrapper .module-headline [data-js-select="Headline_main"]').textContent;
     cells.push([headline]);
@@ -374,7 +380,11 @@ function customLogic(main, doc, url) {
     });
     doc.querySelector('.downloads-wrapper').after(doc.createElement('hr'));
     const table = WebImporter.DOMUtils.createTable(cells, doc);
-    doc.querySelector('.downloads-wrapper').replaceWith(table);
+    if (styleTable) {
+      doc.querySelector('.featured-articles-with-teaser').replaceWith(table, styleTable);
+    } else {
+      doc.querySelector('.downloads-wrapper').replaceWith(table);
+    }
   }
 
   // Add featured articles block
@@ -382,7 +392,6 @@ function customLogic(main, doc, url) {
     const cells = [['Article List']];
     doc.querySelector('.featured-articles-with-teaser').after(doc.createElement('hr'));
     const table = WebImporter.DOMUtils.createTable(cells, doc);
-    doc.querySelector('.featured-articles-with-teaser').replaceWith(table);
   }
 
   // Add carousel block or text-media autoblock
