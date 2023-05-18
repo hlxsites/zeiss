@@ -177,7 +177,7 @@ export default async function decorate(block) {
     }
   } catch (error) {
     // eslint-disable-next-line no-console
-    // console.log('Unable to fetch navbar, using fallback', error);
+    console.log('Unable to fetch navbar, using fallback');
 
     const fbhtml = await fetch(`/blocks/header/fallback_${getLocale()}.html`);
 
