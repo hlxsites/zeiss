@@ -170,7 +170,7 @@ const createMetadata = (main, document, url) => {
     }
   }
   if (imagealt) {
-    meta.imagealt = imagealt.content;
+    meta['Image-Alt'] = imagealt.content;
   }
 
   // iterate over tagsMap
