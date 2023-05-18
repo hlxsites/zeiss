@@ -159,16 +159,8 @@ const createMetadata = (main, document, url) => {
     meta.Image = el;
   }
 
-  // Preference for image alt tag is og:image:alt > og:title > title
-  let imagealt = document.querySelector('[property="og:image:alt"]');
-  if (imagealt === null || imagealt === undefined) {
-    const ogTitle = document.querySelector('[property="og:title"]');
-    if (ogTitle) {
-      imagealt = document.querySelector('[property="og:title"]');
-    } else {
-      imagealt = title;
-    }
-  }
+  // Preference order for image alt tag is og:image:alt > og:title > title
+  const imagealt = document.querySelector('[property="og:image:alt"]') || document.querySelector('[property="og:title"]') || title;
   if (imagealt) {
     meta['Image-Alt'] = imagealt.content;
   }
