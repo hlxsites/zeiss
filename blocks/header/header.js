@@ -154,7 +154,6 @@ export default async function decorate(block) {
   // fetch nav content
   const navPath = cfg.nav || getAemTemplateUrl(getLocale());
 
-  /*
   try {
     const resp = await fetch(navPath);
 
@@ -177,7 +176,6 @@ export default async function decorate(block) {
       decorateIcons(block, true);
     }
   } catch (error) {
-    */
     // eslint-disable-next-line no-console
     // console.log('Unable to fetch navbar, using fallback', error);
 
@@ -187,7 +185,7 @@ export default async function decorate(block) {
       const html = await fbhtml.text();
       block.innerHTML += html;
     }
-  // }
+  }
 
   addScrollListener(block);
   addHeaderInteractions(block);
