@@ -27,6 +27,6 @@ describe('Footer block', () => {
     // const a = document.querySelector('footer a');
     // expect(a).to.exist;
     // expect(a.href).to.equal('https://www.adobe.com/privacy.html');
-    expect(true).to.be.true;
+    expect(true).to.be.false;
   });
 });
