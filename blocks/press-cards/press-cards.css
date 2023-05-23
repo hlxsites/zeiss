@@ -98,6 +98,10 @@
         width: 15rem;
     }
 
+    .press-cards > ul > li > .press-cards-card-image > picture > img {
+        min-height: 12rem;
+    }
+
     .press-cards .landscape > ul > li, .press-cards .landscape > ul > li > .press-cards-card-image {
         width: 20rem;
     }
