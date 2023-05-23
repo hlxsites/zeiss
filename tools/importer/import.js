@@ -349,12 +349,11 @@ function customLogic(main, doc, url) {
 
   // Add downloads block
   if (doc.querySelector('.downloads-wrapper')) {
-    const cells = [['press-cards']];
-    let styleTable;
+    let cells;
     if (doc.querySelectorAll('.download-item--landscape').length > 0) {
-      const styleCells = [['Section Metadata']];
-      styleCells.push(['Style', 'landscape']);
-      styleTable = WebImporter.DOMUtils.createTable(styleCells, doc);
+      cells = [['press-cards(landscape)']];
+    } else {
+      cells = [['press-cards']];
     }
     const headline = doc.createElement('h2');
     headline.textContent = doc.querySelector('.downloads-wrapper .module-headline [data-js-select="Headline_main"]').textContent;
@@ -380,11 +379,7 @@ function customLogic(main, doc, url) {
     });
     doc.querySelector('.downloads-wrapper').after(doc.createElement('hr'));
     const table = WebImporter.DOMUtils.createTable(cells, doc);
-    if (styleTable) {
-      doc.querySelector('.featured-articles-with-teaser').replaceWith(table, styleTable);
-    } else {
-      doc.querySelector('.downloads-wrapper').replaceWith(table);
-    }
+    doc.querySelector('.downloads-wrapper').replaceWith(table);
   }
 
   // Add featured articles block
